@@ -3,6 +3,7 @@ import Home from "../Home/Home";
 import "./Menu.css";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
+import Logout from "../Logout/Logout";
 
 export default function Menu() {
     return (
@@ -14,6 +15,7 @@ export default function Menu() {
                         <a href="search">Search</a>
                         <Link to="/login">Login</Link>
                         <Link to="/register">Register</Link>
+                        <Link to="/logout">Logout</Link>
                 </nav>
             </header>
         </div>
@@ -22,6 +24,7 @@ export default function Menu() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/logout" element={<Logout />} />
         </Routes>
         </>
     )

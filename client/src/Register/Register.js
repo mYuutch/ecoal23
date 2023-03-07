@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import useCookie from 'react-use-cookie';
 
 export default function Register() {
     const [name, setName] = useState('');
@@ -8,6 +10,9 @@ export default function Register() {
     const [password_confirmation, setPassword_confirmation] = useState('');
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [userToken, setUserToken] = useCookie('token', '0');
+    const [registered, setRegistered ] = useState(false)
+    const navigate = useNavigate()
 
     async function register(e) {
         e.preventDefault();
@@ -16,11 +21,26 @@ export default function Register() {
             name: name,
             email: email,
             password: password,
-            password_confirmation: password_confirmation
         })).data;
         setLoading(false);
+        setRegistered(true);
         console.log(response);
+        if (response.error) {
+            setError(response.error);
+        } else {
+            setUserToken(response['access_token'], {
+                days: 365,
+                SameSite: 'Strict',
+                Secure: true,
+            });
+            setRegistered(true);
+            console.log(response['access_token']);
+        }
     }
+
+
+    if (registered)
+        navigate('/')
 
     return (
         <div>
@@ -29,7 +49,6 @@ export default function Register() {
                 <input type="text" placeholder="Name" onChange={(e) => setName(e.target.value)} />
                 <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
                 <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-                <input type="password" placeholder="Confirm Password" onChange={(e) => setPassword_confirmation(e.target.value)} />
                 <button type="submit">Register</button>
             </form>
         </div>

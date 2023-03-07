@@ -25,16 +25,14 @@ export default function Login() {
                 days: 365,
                 SameSite: 'Strict',
                 Secure: true,
-              });   
-              // history('/');
-            
+            });
             setLogged(true);
-              console.log(response['access_token']);
+            console.log(response['access_token']);
         }
         setLoading(false);
     }
 
-    if(logged)    
+    if (logged)
         navigate('/')
     return (
         <div>

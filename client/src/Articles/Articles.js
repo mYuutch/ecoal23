@@ -7,7 +7,6 @@ export default function Articles() {
   const [loading, setLoading] = useState(false);
   const [token, setUserToken] = useCookie('token', '0');
 
-
   async function getData() {
     setLoading(true);
     console.log(token)
