@@ -30,6 +30,10 @@ export default function Article() {
         )
       }
 
+      if (loading) {
+        return <p>Loading...</p>;
+      }
+
     return (
         <div>
             <h2>Each Article</h2>
