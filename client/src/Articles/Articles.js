@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import useCookie from 'react-use-cookie';
 
 export default function Articles() {
  const [data, setData] = useState(null);
  const [loading, setLoading] = useState(false);
-  const token = '4|zAtDuGC553HOOWJgS0xrFV0HnxEaVvZkKTakBCKE';
+ let token = useCookie('prout');
 
   async function getData() {
     setLoading(true);
@@ -17,6 +18,7 @@ export default function Articles() {
         setData(response);
         setLoading(false);
         console.log(response);
+        console.log(token);
       }
 
   useEffect(() => {
