@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios, { all } from 'axios';
 import { useParams } from 'react-router-dom';
 import useCookie from 'react-use-cookie';
 
@@ -65,7 +65,7 @@ export default function Articles() {
   if (loading) {
     return <p>Loading...</p>;
   } else {
-    showArticlesLogged()
+    allArticles();
   }
 
   return (
