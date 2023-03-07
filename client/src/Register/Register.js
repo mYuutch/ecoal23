@@ -40,7 +40,7 @@ export default function Register() {
 
 
     if (registered)
-        navigate('/')
+    window.location.href = '/'
 
     return (
         <div>

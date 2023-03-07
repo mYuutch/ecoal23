@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 export default function Articles() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const { id } = useParams();
 
   async function getData() {
     setLoading(true);
@@ -20,9 +22,11 @@ export default function Articles() {
   function showArticles(title, content, thumbnail, id) {
     return (
       <div>
+        <a href={"/article/"+id}>
         <h3>{title}</h3>
         <p>{content}</p>
         <img src={thumbnail} alt={title} />
+        </a>
       </div>
     )
   }
