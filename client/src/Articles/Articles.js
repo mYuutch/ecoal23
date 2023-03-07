@@ -4,7 +4,7 @@ import axios from 'axios';
 export default function Articles() {
  const [data, setData] = useState(null);
  const [loading, setLoading] = useState(false);
-  const token = '2|9jOVCMmGSBYHQhoCA5yBG0XMTjahSsEulDwKQ6hd';
+  const token = '4|zAtDuGC553HOOWJgS0xrFV0HnxEaVvZkKTakBCKE';
 
   async function getData() {
     setLoading(true);
