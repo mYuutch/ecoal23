@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import useCookie from 'react-use-cookie';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const [token, setToken] = useState('');
+    const [cookies, setCookie] = useCookie('prout');
 
     const history = useNavigate();
 
@@ -20,9 +21,9 @@ export default function Login() {
         if (response.error) {
             setError(response.error);
         } else {
-            setToken(response.token);
-            localStorage.setItem('token', response.token);
-            history('/');
+            setCookie(response['access_token']);
+            // history('/');
+            console.log(response['access_token']);
         }
         setLoading(false);
     }
