@@ -18,6 +18,26 @@ use App\Http\Controllers\AuthController;
 */
 
 
+Route::get('/articles', function () {
+    return App\Models\Article::all();
+});
+
+Route::get('/article/{id}', function($id){
+    return App\Models\Article::find($id);
+});
+
+Route::delete('/article/{id}', function($id){
+    $article = App\Models\Article::find($id);
+
+    if ($article == false) {
+        return response("", 204);
+    }
+
+    $article->delete();
+    return response("", 202);
+});
+
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
