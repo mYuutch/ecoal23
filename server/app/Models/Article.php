@@ -10,8 +10,10 @@ class Article extends Model
     use HasFactory;
 
 
+    protected $fillable = ['title', 'content', 'thumbnailURL', 'mediaType', 'mediaURL', 'leadStory'];
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
     }
 }
+    
