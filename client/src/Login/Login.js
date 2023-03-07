@@ -8,9 +8,9 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const [cookies, setCookie] = useCookie('prout');
-
-    const history = useNavigate();
+    const [userToken, setUserToken] = useCookie('token', '0');
+    const [logged, setLogged] = useState(false)
+    const navigate = useNavigate()
 
     async function login() {
         setLoading(true);
@@ -21,13 +21,21 @@ export default function Login() {
         if (response.error) {
             setError(response.error);
         } else {
-            setCookie(response['access_token']);
-            // history('/');
-            console.log(response['access_token']);
+            setUserToken(response['access_token'], {
+                days: 365,
+                SameSite: 'Strict',
+                Secure: true,
+              });   
+              // history('/');
+            
+            setLogged(true);
+              console.log(response['access_token']);
         }
         setLoading(false);
     }
 
+    if(logged)    
+        navigate('/')
     return (
         <div>
             <h2>Login</h2>

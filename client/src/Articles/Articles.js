@@ -3,23 +3,25 @@ import axios from 'axios';
 import useCookie from 'react-use-cookie';
 
 export default function Articles() {
- const [data, setData] = useState(null);
- const [loading, setLoading] = useState(false);
- let token = useCookie('prout');
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [token, setUserToken] = useCookie('token', '0');
+
 
   async function getData() {
     setLoading(true);
+    console.log(token)
     const response = (await axios.get('http://localhost:8000/api/user', {
-        headers: {
-            'Authorization': 'Bearer ' + token,
-            'Accept': 'application/json'
-        }
-    })).data;
-        setData(response);
-        setLoading(false);
-        console.log(response);
-        console.log(token);
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Accept': 'application/json'
       }
+    })).data;
+    setData(response);
+    setLoading(false);
+    console.log(response);
+    console.log(token);
+  }
 
   useEffect(() => {
     getData();
@@ -27,11 +29,11 @@ export default function Articles() {
 
   function showArticles(name, email, id) {
     return (
-        <div>
-            <h3>{name}</h3>
-            <p>{email}</p>
-            <p>{id}</p>
-        </div>
+      <div>
+        <h3>{name}</h3>
+        <p>{email}</p>
+        <p>{id}</p>
+      </div>
     )
   }
 
@@ -42,10 +44,10 @@ export default function Articles() {
     showArticles()
   }
 
-    return (
-        <div>
-            <h2>Articles</h2>
-            {data && showArticles(data.name, data.email, data.id)}
-        </div>
-    )
+  return (
+    <div>
+      <h2>Articles</h2>
+      {data && showArticles(data.name, data.email, data.id)}
+    </div>
+  )
 }
