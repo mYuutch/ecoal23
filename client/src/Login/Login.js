@@ -33,7 +33,7 @@ export default function Login() {
     }
 
     if (logged)
-        navigate('/')
+        window.location.href = '/'
     return (
         <div>
             <h2>Login</h2>

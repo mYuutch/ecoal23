@@ -1,37 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import useCookie from 'react-use-cookie';
 
 export default function Articles() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [token, setUserToken] = useCookie('token', '0');
 
   async function getData() {
     setLoading(true);
-    console.log(token)
-    const response = (await axios.get('http://localhost:8000/api/user', {
-      headers: {
-        'Authorization': 'Bearer ' + token,
-        'Accept': 'application/json'
-      }
-    })).data;
-    setData(response);
+    const response = (await axios.get('http://localhost:8000/api/articles')).data;
+    setData(response[0]);
     setLoading(false);
     console.log(response);
-    console.log(token);
   }
 
   useEffect(() => {
     getData();
   }, []);
 
-  function showArticles(name, email, id) {
+  function showArticles(title, content, thumbnail, id) {
     return (
       <div>
-        <h3>{name}</h3>
-        <p>{email}</p>
-        <p>{id}</p>
+        <h3>{title}</h3>
+        <p>{content}</p>
+        <img src={thumbnail} alt={title} />
       </div>
     )
   }
@@ -46,7 +37,7 @@ export default function Articles() {
   return (
     <div>
       <h2>Articles</h2>
-      {data && showArticles(data.name, data.email, data.id)}
+      {data && showArticles(data.title, data.content, data.thumbnail, data.id)}
     </div>
   )
 }

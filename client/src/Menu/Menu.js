@@ -4,8 +4,40 @@ import "./Menu.css";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import Logout from "../Logout/Logout";
+import useCookie from 'react-use-cookie';
 
 export default function Menu() {
+    const [token, setUserToken] = useCookie('token', '0');
+
+    function showMenu() {
+        if (token === '0') {
+            return (
+                <>
+                    <Link to="/login">Login</Link>
+                    <Link to="/register">Register</Link>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <Link to="/logout">Logout</Link>
+                </>
+            )
+        }
+    }
+
+    function Menuu() {
+        if(token !== '0') {
+            return (
+                <>
+                    <Link to="/">Home</Link>
+                    <a href="search">Search</a>
+                </>
+            )
+        }
+    }
+
+
     return (
         <>
         <div className="navbar">
@@ -13,9 +45,7 @@ export default function Menu() {
                 <nav>
                         <Link to="/">Home</Link>
                         <a href="search">Search</a>
-                        <Link to="/login">Login</Link>
-                        <Link to="/register">Register</Link>
-                        <Link to="/logout">Logout</Link>
+                        {showMenu()}
                 </nav>
             </header>
         </div>
