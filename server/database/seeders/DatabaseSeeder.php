@@ -22,15 +22,16 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-
-        $article = Article::create([
+        $articles =  Article::create([
             'title' => 'Welcome to ecoal23',
             'content' => '<h1>Hello from ecoal</h1><p>Nice to see you in <strong>Lens</strong>. Enjoy !</p>',
             'thumbnailURL' => '/ecoal.jpg',
             'mediaType' => 'image',
             'mediaURL' => '/ecoal.jpg',
-            'leadStory' => false
+            'leadStory' => false    
         ]);
+
+        
      
         $tag1 = Tag::create(['name' => 'ecoal23']);
         $tag2 = Tag::create(['name' => 'react']);
