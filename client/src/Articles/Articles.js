@@ -23,7 +23,9 @@ export default function Articles() {
     getData();
   }, []);
 
-  function showArticlesLogged(title, content, thumbnailURL, id) {
+  function showArticlesLogged(title, content, leadStory, thumbnailURL, id) {
+
+    if (leadStory === true) {
     return (
       <div className='articles'>
         <h3>{title}</h3>
@@ -39,15 +41,35 @@ export default function Articles() {
         </div>
       </div>
     )
+  } else {
+    return (
+      <div>
+        <p>
+          No articles.
+        </p>
+      </div>
+    )
+  }
   }
 
   function showArticlesNotLogged(title, thumbnailURL, leadStory, id) {
-    return (
-      <div className='articles'>
+
+    if (leadStory === true) {
+      return (
+        <div className='articles'>
         <h3>{title}</h3>
         <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
       </div>
-    )
+      )
+    } else {
+      return (
+        <div>
+          <p>
+            No articles.
+          </p>
+        </div>
+      )
+    }
   }
 
 
