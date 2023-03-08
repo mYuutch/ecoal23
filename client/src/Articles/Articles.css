@@ -36,11 +36,17 @@
   
 }
 .blur{
-    height: 6rem;
+    top: -1rem;
+    height: 2rem;
     width: 100%;
-    filter: blur(1rem);
     position: relative;
-    top: 4rem;
+    /* opacity: 0.5; */
+    background-color: black;
+    filter: blur(14px);
+}
+.abovetext{
+    position: relative;
+    z-index: 2;
 }
 
 .blackdiv{
