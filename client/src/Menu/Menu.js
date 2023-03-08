@@ -57,8 +57,8 @@ export default function Menu() {
             <div className="topnav">
                 <header>
                     <div className="topmenu">
-                        <a href="/" className="active"><img class="logo" src="images/logo.PNG"></img></a>
-                        <a href="/" className="active textlogo">The Urban Commuter.</a>
+                        <a href="/" className="active"><img class="logo" src="/images/logo.PNG"></img></a>
+                        <a href="/" className="active textlogo">The Urban Commuter</a>
                         
                     <a href="javascript:void(0);" className="icon" onClick={scrollMenu}>
                         <i className="fa fa-bars"></i>
