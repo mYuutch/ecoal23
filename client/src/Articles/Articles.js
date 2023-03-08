@@ -43,8 +43,8 @@ export default function Articles() {
     return (
       <div className='articles'>
         <h3>{title}</h3>
-        <p>{leadStory}</p>
         <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
+        <p>{leadStory}</p>
       </div>
     )
   }
@@ -76,7 +76,6 @@ export default function Articles() {
     <div className='container-articles'>
       {data && allArticles()}
       {data && allArticles()}
-
     </div>
   )
 }

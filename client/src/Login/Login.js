@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import useCookie from 'react-use-cookie';
+import './Login.css';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -36,10 +37,14 @@ export default function Login() {
         window.location.href = '/'
     return (
         <div>
-            <h2>Login</h2>
+            <h1>Login</h1>
+            <div className="login-form">
+            <label>Email</label>
             <input type="text" placeholder="Email" onChange={e => setEmail(e.target.value)} />
+            <label>Password</label>
             <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
             <button onClick={login}>Login</button>
+            </div>
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
         </div>

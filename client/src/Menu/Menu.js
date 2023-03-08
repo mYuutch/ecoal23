@@ -51,6 +51,8 @@ export default function Menu() {
   }
     }
 
+    // menu close when you click on a link
+
 
     return (
         <>
