@@ -28,7 +28,7 @@ export default function Articles() {
       <div className='articles'>
         <h3>{title}</h3>
         <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
-        <p>{content}</p>
+        <p >{content}</p>
         <a href={"/article/" + id}>
           <button className='readmore'>Read more</button>
         </a>
@@ -40,8 +40,8 @@ export default function Articles() {
     return (
       <div className='articles'>
         <h3>{title}</h3>
-        <p>{leadStory}</p>
         <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
+        <p>{leadStory}</p>
       </div>
     )
   }
@@ -73,7 +73,6 @@ export default function Articles() {
     <div className='container-articles'>
       {data && allArticles()}
       {data && allArticles()}
-
     </div>
   )
 }

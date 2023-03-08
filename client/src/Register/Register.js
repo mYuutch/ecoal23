@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import useCookie from 'react-use-cookie';
+import './Register.css';
 
 export default function Register() {
     const [name, setName] = useState('');
@@ -38,6 +39,8 @@ export default function Register() {
         }
     }
 
+      
+
 
     if (registered)
     window.location.href = '/'
@@ -46,10 +49,16 @@ export default function Register() {
         <div>
             <h2>Register</h2>
             <form onSubmit={register}>
+                <div className="error">{error}</div>
+                <div className='register-form'>
+                <label>Name</label>
                 <input type="text" placeholder="Name" onChange={(e) => setName(e.target.value)} />
+                <label>Email</label>
                 <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                <label>Password</label>
                 <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                 <button type="submit">Register</button>
+                </div>
             </form>
         </div>
     )
