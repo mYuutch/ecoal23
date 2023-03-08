@@ -16,18 +16,18 @@ export default function Articles() {
     const response = (await axios.get('http://localhost:8000/api/articles')).data;
     setData(response[0]);
     setLoading(false);
-    console.log(response);
+    console.log(response[0]);
   }
 
   useEffect(() => {
     getData();
   }, []);
 
-  function showArticlesLogged(title, content, thumbnail, id) {
+  function showArticlesLogged(title, content, thumbnailURL, id) {
     return (
       <div className='articles'>
         <h3>{title}</h3>
-        <img src={thumbnail} alt={title} />
+        <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
         <p>{content}</p>
         <a href={"/article/" + id}>
           <button className='readmore'>Read more</button>
@@ -36,12 +36,12 @@ export default function Articles() {
     )
   }
 
-  function showArticlesNotLogged(title, thumbnail, leadStory, id) {
+  function showArticlesNotLogged(title, thumbnailURL, leadStory, id) {
     return (
       <div>
         <h3>{title}</h3>
         <p>{leadStory}</p>
-        <img src={thumbnail} alt={title} />
+        <img src={thumbnailURL} alt={title} />
       </div>
     )
   }
@@ -51,13 +51,13 @@ export default function Articles() {
     if (userToken === '0') {
       return (
         <div>
-          {data && showArticlesNotLogged(data.title, data.thumbnail, data.leadStory, data.id)}
+          {data && showArticlesNotLogged(data.title, data.thumbnailURL, data.leadStory, data.id)}
         </div>
       )
     } else {
       return (
         <div>
-          {data && showArticlesLogged(data.title, data.content, data.thumbnail, data.id, data.leadStory)}
+          {data && showArticlesLogged(data.title, data.content, data.thumbnailURL, data.id, data.leadStory)}
         </div>
       )
     }
@@ -71,7 +71,6 @@ export default function Articles() {
 
   return (
     <div className='container-articles'>
-      <h2>Articles</h2>
       {data && allArticles()}
     </div>
   )

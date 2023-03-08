@@ -11,6 +11,19 @@
     display: flex;
     flex-direction: column;
     color: white;
+    gap: 15px;
+}
+
+.articles h3{
+    font-size: 2rem;
+    text-align: left;
+}
+
+.articles img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0 auto;
 }
 
 .readmore{
