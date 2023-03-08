@@ -28,7 +28,7 @@ export default function Articles() {
       <div className='articles'>
         <h3>{title}</h3>
         <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
-        <p>{content}</p>
+        <p className="articletext">{content}</p>
 
         <div className="abovetext">
           <div className="blur"></div>
