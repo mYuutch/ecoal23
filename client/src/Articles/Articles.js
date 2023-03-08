@@ -14,9 +14,9 @@ export default function Articles() {
   async function getData() {
     setLoading(true);
     const response = (await axios.get('http://localhost:8000/api/articles')).data;
-    setData(response[0]);
+    setData(response);
     setLoading(false);
-    console.log(response[0]);
+    console.log(response);
   }
 
   useEffect(() => {
@@ -44,7 +44,6 @@ export default function Articles() {
       <div className='articles'>
         <h3>{title}</h3>
         <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
-        <p>{leadStory}</p>
       </div>
     )
   }
@@ -54,13 +53,27 @@ export default function Articles() {
     if (userToken === '0') {
       return (
         <div>
-          {data && showArticlesNotLogged(data.title, data.thumbnailURL, data.leadStory, data.id)}
+          {/* map the data */}
+          {data && data.map((article) => {
+            return (
+              <div>
+                {showArticlesNotLogged(article.title, article.thumbnailURL, article.leadStory, article.id)}
+                </div>
+            )
+          })}
         </div>
       )
     } else {
       return (
         <div>
-          {data && showArticlesLogged(data.title, data.content, data.thumbnailURL, data.id, data.leadStory)}
+          {/* map the data */}
+          {data && data.map((article) => {
+            return (
+              <div>
+                {showArticlesLogged(article.title, article.content, article.thumbnailURL, article.id)}
+                </div>
+            )
+          })}
         </div>
       )
     }
@@ -74,7 +87,6 @@ export default function Articles() {
 
   return (
     <div className='container-articles'>
-      {data && allArticles()}
       {data && allArticles()}
     </div>
   )

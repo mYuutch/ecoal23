@@ -13,7 +13,7 @@ export default function Dashboard() {
     async function getData() {
         setLoading(true);
         const response = (await axios.get('http://localhost:8000/api/articles')).data;
-        setData(response[0]);
+        setData(response);
         setLoading(false);
     }
 
@@ -71,7 +71,7 @@ export default function Dashboard() {
         if (data) {
             return (
                 <div>
-                    {showArticlesLogged(data.title, data.content, data.thumbnailURL, data.id)}
+                    {data.map((article) => showArticlesLogged(article.title, article.content, article.thumbnailURL, article.id))}
                 </div>
             )
         }else{
