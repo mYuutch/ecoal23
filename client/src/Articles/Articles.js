@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios, { all } from 'axios';
 import { useParams } from 'react-router-dom';
 import useCookie from 'react-use-cookie';
+import './Articles.css';
 
 export default function Articles() {
   const [data, setData] = useState(null);
@@ -24,12 +25,12 @@ export default function Articles() {
 
   function showArticlesLogged(title, content, thumbnail, id) {
     return (
-      <div>
+      <div className='articles'>
         <h3>{title}</h3>
-        <p>{content}</p>
         <img src={thumbnail} alt={title} />
+        <p>{content}</p>
         <a href={"/article/" + id}>
-          <button>Read more</button>
+          <button className='readmore'>Read more</button>
         </a>
       </div>
     )
@@ -46,21 +47,21 @@ export default function Articles() {
   }
 
 
- function allArticles() {
-  if (userToken === '0') {
-    return (
-      <div>
-        {data && showArticlesNotLogged(data.title, data.thumbnail, data.leadStory, data.id)}
-      </div>
-    )
-  }else {
-    return (
-      <div>
-        {data && showArticlesLogged(data.title, data.content, data.thumbnail, data.id, data.leadStory)}
-      </div>
-    )
+  function allArticles() {
+    if (userToken === '0') {
+      return (
+        <div>
+          {data && showArticlesNotLogged(data.title, data.thumbnail, data.leadStory, data.id)}
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          {data && showArticlesLogged(data.title, data.content, data.thumbnail, data.id, data.leadStory)}
+        </div>
+      )
+    }
   }
-}
 
   if (loading) {
     return <p>Loading...</p>;
@@ -69,7 +70,7 @@ export default function Articles() {
   }
 
   return (
-    <div>
+    <div className='container-articles'>
       <h2>Articles</h2>
       {data && allArticles()}
     </div>

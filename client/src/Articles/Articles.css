@@ -1,0 +1,34 @@
+.container-articles{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.articles{
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.readmore{
+    height: 100%;
+    text-align: center;
+    background-color: #FFD550;
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.readmore:hover{
+    background-color: #ffedb1;
+    color: black;
+}
+
+.articles button{
+    text-decoration: none;
+}
