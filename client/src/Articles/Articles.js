@@ -29,12 +29,14 @@ export default function Articles() {
         <h3>{title}</h3>
         <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
         <p>{content}</p>
-        <div className="blur"></div>
-        <div className="blackdiv"></div>
-        <a className="readmore" href={"/article/" + id}>
-          <p>Read more</p>
-          <button className='readmorebutton'><i class='bx bx-down-arrow-alt' ></i></button>
-        </a>
+
+        <div className="abovetext">
+          <div className="blur"></div>
+          <a className="readmore" href={"/article/" + id}>
+            <p>Read more</p>
+            <button className='readmorebutton'><i class='bx bx-down-arrow-alt' ></i></button>
+          </a>
+        </div>
       </div>
     )
   }
