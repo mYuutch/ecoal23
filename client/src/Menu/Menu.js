@@ -7,6 +7,7 @@ import Logout from "../Logout/Logout";
 import Dashboard from "../Dashboard/Dashboard";
 import Article from "../Article/Article";
 import User from "../User/User";
+import Search from "../Search/Search";
 import useCookie from 'react-use-cookie';
 
 export default function Menu() {
@@ -16,6 +17,7 @@ export default function Menu() {
         if (token === '0') {
             return (
                 <>
+                    
                     <Link to="/login">Login</Link>
                     <Link to="/register">Register</Link>
                 </>
@@ -35,8 +37,8 @@ export default function Menu() {
         if(token !== '0') {
             return (
                 <>
-                    <Link to="/">Home</Link>
-                    <a href="search">Search</a>
+                    
+                   
                 </>
             )
         }
@@ -48,13 +50,15 @@ export default function Menu() {
         <div className="navbar">
             <header>
                 <nav>
-                        <Link to="/">Home</Link>
-                        <a href="search">Search</a>
+                    <Link to="/">Home</Link>
+                    <Link to ="/search">Search</Link>
+                        
                         {showMenu()}
                 </nav>
             </header>
         </div>
 
+        
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -64,6 +68,7 @@ export default function Menu() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/article/:id" element={<Article />} />
             <Route path="/article" element={<Article />} />
+            <Route path="/search" element={<Search/>} />
         </Routes>
         </>
     )
