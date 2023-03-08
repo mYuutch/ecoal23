@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import '../Articles/Articles.css'
 
 export default function Dashboard() {
     const [data, setData] = useState(null);
@@ -20,7 +21,7 @@ export default function Dashboard() {
         getData();
     }, []);
 
-    function showArticlesLogged(title, content, thumbnail, id) {
+    function showArticlesLogged(title, content, thumbnailURL, id) {
        
         function deleteArticle() {
             axios.delete('http://localhost:8000/api/article/' + id)
@@ -50,10 +51,10 @@ export default function Dashboard() {
 
         return (
             <>
-            <div>
+        <div className='articles'>
                 <h3>{title}</h3>
                 <p>{content}</p>
-                <img src={thumbnail} alt={title} />
+                <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
                 <a href={"/article/" + id}>
                     <button>Read more</button>
                 </a>
@@ -88,7 +89,7 @@ export default function Dashboard() {
         if (data) {
             return (
                 <div>
-                    {showArticlesLogged(data.title, data.content, data.thumbnail, data.id)}
+                    {showArticlesLogged(data.title, data.content, data.thumbnailURL, data.id)}
                 </div>
             )
         }else{
@@ -104,7 +105,9 @@ export default function Dashboard() {
         <div>
             <h2>Dashboard</h2>
             <button className='btn' onClick={addArticle}>Add Article</button>
+            <div className='container-articles'>
             {articlesDashboard()}
+            </div>
         </div>
     )
 }

@@ -38,10 +38,10 @@ export default function Articles() {
 
   function showArticlesNotLogged(title, thumbnailURL, leadStory, id) {
     return (
-      <div>
+      <div className='articles'>
         <h3>{title}</h3>
         <p>{leadStory}</p>
-        <img src={thumbnailURL} alt={title} />
+        <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
       </div>
     )
   }
@@ -72,6 +72,8 @@ export default function Articles() {
   return (
     <div className='container-articles'>
       {data && allArticles()}
+      {data && allArticles()}
+
     </div>
   )
 }

@@ -12,6 +12,7 @@
     flex-direction: column;
     color: white;
     gap: 15px;
+    margin-top: 20px;
 }
 
 .articles::before{
@@ -20,6 +21,7 @@
     height: 0.5%;
     left: 0;
     margin-left: 3.5%;
+    margin-top: -3%;
     position: absolute;
     z-index:10;
     background-color: #FFD550;
