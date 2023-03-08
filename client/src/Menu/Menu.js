@@ -8,6 +8,7 @@ import Dashboard from "../Dashboard/Dashboard";
 import Article from "../Article/Article";
 import Addarticle from "../Addarticle/Addarticle";
 import User from "../User/User";
+import Search from "../Search/Search";
 import useCookie from 'react-use-cookie';
 
 export default function Menu() {
@@ -17,6 +18,7 @@ export default function Menu() {
         if (token === '0') {
             return (
                 <>
+                    
                     <Link to="/login">Login</Link>
                     <Link to="/register">Register</Link>
                 </>
@@ -37,8 +39,8 @@ export default function Menu() {
         if (token !== '0') {
             return (
                 <>
-                    <Link to="/">Home</Link>
-                    <a href="search">Search</a>
+                    
+                   
                 </>
             )
         }
