@@ -17,8 +17,9 @@
 .articles::before{
     content: "";
     width: 93%;
-    margin-left: 3.5%;
     height: 0.5%;
+    left: 0;
+    margin-left: 3.5%;
     position: absolute;
     z-index:10;
     background-color: #FFD550;
