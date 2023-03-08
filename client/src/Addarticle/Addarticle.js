@@ -29,7 +29,7 @@ export default function Addarticle() {
     function changePath() {
         const file = document.getElementById('thumbnailURL');
         const path = file.value;
-        const filename = path.replace(/^.*\\/, "/");
+        const filename = path.replace(/^.*\\/, "");
         console.log(filename);
         setThumbnailURL(filename);
     }
