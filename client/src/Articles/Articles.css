@@ -104,3 +104,23 @@
 .articles button{
     text-decoration: none;
 }
+
+.editbtn{
+    background-color: #FFD550;
+    color: black;
+    font-weight: bold;
+    padding: 0 14vw;
+    margin: 10px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.deletebtn{
+    background-color: #FFD550;
+    color: black;
+    font-weight: bold;
+    padding: 0 14vw;
+    margin: 10px;
+    border-radius: 10px;
+    transition: 0.5s;
+}

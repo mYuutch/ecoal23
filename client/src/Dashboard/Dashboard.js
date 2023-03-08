@@ -52,16 +52,21 @@ export default function Dashboard() {
         return (
             <>
         <div className='articles'>
-                <h3>{title}</h3>
-                <p>{content}</p>
-                <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
-                <a href={"/article/" + id}>
-                    <button>Read more</button>
-                </a>
-            </div>
+        <h3>{title}</h3>
+        <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
+        <p>{content}</p>
+
+        <div className="abovetext">
+          <div className="blur"></div>
+          <a className="readmore" href={"/article/" + id}>
+            <p>Read more</p>
+            <button className='readmorebutton'><i class='bx bx-down-arrow-alt' ></i></button>
+          </a>
+        </div>
+      </div>
             <div>
-                <button onClick={editArticle}>Edit</button>
-                <button onClick={deleteArticle}>Delete</button>
+                <button className='editbtn' onClick={editArticle}>Edit</button>
+                <button className='deletebtn' onClick={deleteArticle}>Delete</button>
             </div>
             </>
         )
