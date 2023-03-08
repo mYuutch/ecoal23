@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'thumbnailURL' => '/ecoal.jpg',
             'mediaType' => 'image',
             'mediaURL' => '/ecoal.jpg',
-            'leadStory' => false    
+            'leadStory' => true    
         ]);
 
         $article2 =  Article::create([
@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
             'thumbnailURL' => '/ecoal.jpg',
             'mediaType' => 'image',
             'mediaURL' => '/ecoal.jpg',
-            'leadStory' => false    
+            'leadStory' => true    
         ]);
 
         $article3 =  Article::create([
@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
             'thumbnailURL' => '/ecoal.jpg',
             'mediaType' => 'image',
             'mediaURL' => '/ecoal.jpg',
-            'leadStory' => false    
+            'leadStory' => true    
         ]);
 
         

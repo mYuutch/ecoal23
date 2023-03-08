@@ -87,12 +87,7 @@ Route::get('/article/{id}/tags', function($id){
 //Add Tags to an article
 Route::get('/article/{id}/tags/add/{tag}', function($id, $tag){
     $a = Article::findOrFail($id);
-    if (Tag::where('name', $tag)) { 
-        $existingTag = Tag::where('name', $tag);
-        $a->tags()->attach($existingTag->id);}
-
-     $newTag = Tag::create(['name' => $tag]); 
-     $a->tags()->attach($newTag->id);
+    dd($a->tags());
 });
 
 
