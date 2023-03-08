@@ -36,7 +36,7 @@
   
 }
 .blur{
-    top: -1rem;
+    top: -2rem;
     height: 2rem;
     width: 100%;
     position: relative;
@@ -47,6 +47,7 @@
 .abovetext{
     position: relative;
     z-index: 2;
+    height: 4rem;
 }
 
 .blackdiv{
@@ -61,7 +62,8 @@
 
 .articles p{
     width: 100%;
-    max-height: 30px;
+    max-height: 45px;
+    overflow: hidden;
 }
 
 .articles img{
@@ -74,10 +76,13 @@
 .readmore{
     text-decoration: none;
     position: relative;
+    top: -4rem;
+    background: none;
 }
-
+.readmore p{
+    background: none;
+}
 .readmorebutton{
-    height: 100%;
     text-align: center;
     background-color: #FFD550;
     font-weight: bold;
