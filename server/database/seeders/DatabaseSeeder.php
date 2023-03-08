@@ -22,7 +22,25 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $articles =  Article::create([
+        $article1 =  Article::create([
+            'title' => 'Welcome to ecoal23',
+            'content' => '<h1>Hello from ecoal</h1><p>Nice to see you in <strong>Lens</strong>. Enjoy !</p>',
+            'thumbnailURL' => '/ecoal.jpg',
+            'mediaType' => 'image',
+            'mediaURL' => '/ecoal.jpg',
+            'leadStory' => false    
+        ]);
+
+        $article2 =  Article::create([
+            'title' => 'Welcome to ecoal23',
+            'content' => '<h1>Hello from ecoal</h1><p>Nice to see you in <strong>Lens</strong>. Enjoy !</p>',
+            'thumbnailURL' => '/ecoal.jpg',
+            'mediaType' => 'image',
+            'mediaURL' => '/ecoal.jpg',
+            'leadStory' => false    
+        ]);
+
+        $article3 =  Article::create([
             'title' => 'Welcome to ecoal23',
             'content' => '<h1>Hello from ecoal</h1><p>Nice to see you in <strong>Lens</strong>. Enjoy !</p>',
             'thumbnailURL' => '/ecoal.jpg',
@@ -36,7 +54,9 @@ class DatabaseSeeder extends Seeder
         $tag1 = Tag::create(['name' => 'ecoal23']);
         $tag2 = Tag::create(['name' => 'react']);
 
-        $article->tags()->attach([$tag1->id, $tag2->id]);
+        $article1->tags()->attach([$tag1->id, $tag2->id]);
+        $article2->tags()->attach([$tag1->id, $tag2->id]);
+        $article3->tags()->attach([$tag1->id, $tag2->id]);
        
     }
 }

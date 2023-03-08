@@ -75,14 +75,7 @@ Route::get('/article/title/{title}', function($title){
 
 //Get articles with a specific tag   NOT DONE !!!!!! 
 Route::get('/articles/tag/{tag}', function($tag){
-    $articles = Article::all();
-    $results = array();
-    foreach ($articles as $article ) {
-        if ($article->tags->contains($tag)) {array_push($results, $article);}
-    }
 
-    return $results;
-    
 });
 
 // Get Tags of an article
