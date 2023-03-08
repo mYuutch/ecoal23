@@ -8,6 +8,15 @@
     text-align: center;
     justify-content: space-between;
   }
+  .textlogo{
+    font-family: 'Poppins', sans-serif;
+  }
+  .logo{
+    width: 9vw;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+  }
   .topmenu a {
     display: inline-block;
   }
@@ -18,9 +27,9 @@
   
   .topnav a {
     color: white;
-    padding: 14px 16px;
+    padding: 20px 20px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 4vw;
     display: block;
   }
   
@@ -35,6 +44,6 @@
   }
   
   .active {
-    background-color: #04AA6D;
+    background-color: black;
     color: white;
   }
