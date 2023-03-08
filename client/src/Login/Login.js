@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import useCookie from 'react-use-cookie';
+import './Login.css';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const [cookies, setCookie] = useCookie('prout');
-
-    const history = useNavigate();
+    const [userToken, setUserToken] = useCookie('token', '0');
+    const [logged, setLogged] = useState(false)
+    const navigate = useNavigate()
 
     async function login() {
         setLoading(true);
@@ -21,19 +22,29 @@ export default function Login() {
         if (response.error) {
             setError(response.error);
         } else {
-            setCookie(response['access_token']);
-            // history('/');
+            setUserToken(response['access_token'], {
+                days: 365,
+                SameSite: 'Strict',
+                Secure: true,
+            });
+            setLogged(true);
             console.log(response['access_token']);
         }
         setLoading(false);
     }
 
+    if (logged)
+        window.location.href = '/'
     return (
         <div>
-            <h2>Login</h2>
+            <h1>Login</h1>
+            <div className="login-form">
+            <label>Email</label>
             <input type="text" placeholder="Email" onChange={e => setEmail(e.target.value)} />
+            <label>Password</label>
             <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
             <button onClick={login}>Login</button>
+            </div>
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
         </div>
