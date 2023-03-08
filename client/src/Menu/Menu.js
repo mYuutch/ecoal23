@@ -89,6 +89,7 @@ export default function Menu() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path="/user" element={<User />} />
+                <Route path="/search" element={<Search />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/addarticle" element={<Addarticle />} />
                 <Route path="/article/:id" element={<Article />} />

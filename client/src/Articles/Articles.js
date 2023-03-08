@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import useCookie from 'react-use-cookie';
 import './Articles.css';
 
-
 export default function Articles() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -17,7 +16,7 @@ export default function Articles() {
     const response = (await axios.get('http://localhost:8000/api/articles')).data;
     setData(response);
     setLoading(false);
-    console.log(response);
+    console.log(response[0]);
   }
 
   useEffect(() => {
@@ -26,7 +25,7 @@ export default function Articles() {
 
   function showArticlesLogged(title, content, leadStory, thumbnailURL, id) {
 
-    if (leadStory === true) {
+    if (leadStory == true) {
     return (
       <div className='articles'>
         <h3>{title}</h3>
@@ -52,6 +51,7 @@ export default function Articles() {
     )
   }
   }
+  
 
   function showArticlesNotLogged(title, thumbnailURL, leadStory, id) {
 
@@ -76,7 +76,7 @@ export default function Articles() {
 
   function allArticles() {
     if (userToken === '0') {
-        return (
+      return (
         <div>
           {/* map the data */}
           {data && data.map((article) => {
