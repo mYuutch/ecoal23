@@ -38,11 +38,6 @@
     display: block;
   }
   
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
   .active {
     background-color: black;
     color: white;

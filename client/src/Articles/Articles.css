@@ -14,6 +14,17 @@
     gap: 15px;
 }
 
+.articles::before{
+    content: "";
+    width: 93%;
+    margin-left: 3.5%;
+    height: 0.5%;
+    position: absolute;
+    z-index:10;
+    background-color: #FFD550;
+    border-radius: 2px;
+}
+
 .articles h3{
     font-size: 2rem;
     text-align: left;
