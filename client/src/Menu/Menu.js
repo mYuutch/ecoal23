@@ -6,6 +6,7 @@ import Register from "../Register/Register";
 import Logout from "../Logout/Logout";
 import Dashboard from "../Dashboard/Dashboard";
 import Article from "../Article/Article";
+import Addarticle from "../Addarticle/Addarticle";
 import User from "../User/User";
 import Search from "../Search/Search";
 import useCookie from 'react-use-cookie';
@@ -27,6 +28,7 @@ export default function Menu() {
                 <>
                     <Link to="/user">User</Link>
                     <Link to="/dashboard">Dashboard</Link>
+                    <Link to="/addarticle">Add an Article</Link>
                     <Link to="/logout">Logout</Link>
                 </>
             )
@@ -34,7 +36,7 @@ export default function Menu() {
     }
 
     function Menuu() {
-        if(token !== '0') {
+        if (token !== '0') {
             return (
                 <>
                     
@@ -44,32 +46,54 @@ export default function Menu() {
         }
     }
 
+    function scrollMenu() {
+        var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+    }
+
+    // menu close when you click on a link
+
 
     return (
         <>
-        <div className="navbar">
-            <header>
-                <nav>
-                    <Link to="/">Home</Link>
-                    <Link to ="/search">Search</Link>
+            <div className="topnav">
+                <header>
+                    <div className="topmenu">
+                        <a href="/" className="active"><img class="logo" src="/images/logo.PNG"></img></a>
+                        <a href="/" className="active textlogo">The Urban Commuter</a>
                         
-                        {showMenu()}
-                </nav>
-            </header>
-        </div>
+                    <a href="javascript:void(0);" className="icon" onClick={scrollMenu}>
+                        <i className="fa fa-bars"></i>
+                    </a>
 
-        
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/user" element={<User />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/article/:id" element={<Article />} />
-            <Route path="/article" element={<Article />} />
-            <Route path="/search" element={<Search/>} />
-        </Routes>
+
+                    </div>
+
+                    <div id="myLinks">
+                        <Link to="/">Home</Link>
+                        <a href="search">Search</a>
+                        {showMenu()}
+                    </div>
+                    
+                </header>
+
+            </div>
+
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/logout" element={<Logout />} />
+                <Route path="/user" element={<User />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/addarticle" element={<Addarticle />} />
+                <Route path="/article/:id" element={<Article />} />
+                <Route path="/article" element={<Article />} />
+            </Routes>
         </>
     )
 }

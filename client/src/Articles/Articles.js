@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios, { all } from 'axios';
 import { useParams } from 'react-router-dom';
 import useCookie from 'react-use-cookie';
+import './Articles.css';
 
 
 export default function Articles() {
@@ -14,7 +15,7 @@ export default function Articles() {
   async function getData() {
     setLoading(true);
     const response = (await axios.get('http://localhost:8000/api/articles')).data;
-    setData(response[0]);
+    setData(response);
     setLoading(false);
     console.log(response);
   }
@@ -23,45 +24,63 @@ export default function Articles() {
     getData();
   }, []);
 
-  function showArticlesLogged(title, content, thumbnail, id) {
+  function showArticlesLogged(title, content, thumbnailURL, id) {
     return (
-      <div>
+      <div className='articles'>
         <h3>{title}</h3>
-        <p>{content}</p>
-        <img src={thumbnail} alt={title} />
-        <a href={"/article/" + id}>
-          <button>Read more</button>
-        </a>
+        <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
+        <p className="articletext">{content}</p>
+
+        <div className="abovetext">
+          <div className="blur"></div>
+          <a className="readmore" href={"/article/" + id}>
+            <p>Read more</p>
+            <button className='readmorebutton'><i class='bx bx-down-arrow-alt' ></i></button>
+          </a>
+        </div>
       </div>
     )
   }
 
-  function showArticlesNotLogged(title, thumbnail, leadStory, id) {
+  function showArticlesNotLogged(title, thumbnailURL, leadStory, id) {
     return (
-      <div>
+      <div className='articles'>
         <h3>{title}</h3>
-        <p>{leadStory}</p>
-        <img src={thumbnail} alt={title} />
+        <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
       </div>
     )
   }
 
 
- function allArticles() {
-  if (userToken === '0') {
+  function allArticles() {
+    if (userToken === '0') {
+        return (
+        <div>
+          {/* map the data */}
+          {data && data.map((article) => {
+            return (
+              <div>
+                {showArticlesNotLogged(article.title, article.thumbnailURL, article.leadStory, article.id)}
+                </div>
+            )
+          })}
+        </div>
+      )
+    } else {
       return (
-      <div>
-        {data && showArticlesNotLogged(data.title, data.thumbnail, data.leadStory, data.id)}
-      </div>
-    )
-  }else {
-    return (
-      <div>
-        {data && showArticlesLogged(data.title, data.content, data.thumbnail, data.id, data.leadStory)}
-      </div>
-    )
+        <div>
+          {/* map the data */}
+          {data && data.map((article) => {
+            return (
+              <div>
+                {showArticlesLogged(article.title, article.content, article.thumbnailURL, article.id)}
+                </div>
+            )
+          })}
+        </div>
+      )
+    }
   }
-}
 
   if (loading) {
     return <p>Loading...</p>;
@@ -70,8 +89,7 @@ export default function Articles() {
   }
 
   return (
-    <div>
-      <h2>Articles</h2>
+    <div className='container-articles'>
       {data && allArticles()}
     </div>
   )

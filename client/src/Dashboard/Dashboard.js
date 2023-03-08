@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import '../Articles/Articles.css'
 
 export default function Dashboard() {
     const [data, setData] = useState(null);
@@ -12,7 +13,7 @@ export default function Dashboard() {
     async function getData() {
         setLoading(true);
         const response = (await axios.get('http://localhost:8000/api/articles')).data;
-        setData(response[0]);
+        setData(response);
         setLoading(false);
     }
 
@@ -20,7 +21,7 @@ export default function Dashboard() {
         getData();
     }, []);
 
-    function showArticlesLogged(title, content, thumbnail, id) {
+    function showArticlesLogged(title, content, thumbnailURL, id) {
        
         function deleteArticle() {
             axios.delete('http://localhost:8000/api/article/' + id)
@@ -50,37 +51,24 @@ export default function Dashboard() {
 
         return (
             <>
+        <div className='articles'>
+        <h3>{title}</h3>
+        <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
+        <p>{content}</p>
+
+        <div className="abovetext">
+          <div className="blur"></div>
+          <a className="readmore" href={"/article/" + id}>
+            <p>Read more</p>
+            <button className='readmorebutton'><i class='bx bx-down-arrow-alt' ></i></button>
+          </a>
+        </div>
+      </div>
             <div>
-                <h3>{title}</h3>
-                <p>{content}</p>
-                <img src={thumbnail} alt={title} />
-                <a href={"/article/" + id}>
-                    <button>Read more</button>
-                </a>
-            </div>
-            <div>
-                <button onClick={editArticle}>Edit</button>
-                <button onClick={deleteArticle}>Delete</button>
+                <button className='editbtn' onClick={editArticle}>Edit</button>
+                <button className='deletebtn' onClick={deleteArticle}>Delete</button>
             </div>
             </>
-        )
-    }
-
-
-    function addArticle() {
-
-        render(
-            <div>
-                <h2>Add an Article</h2>
-                <form>
-                    <input type="text" placeholder="Title*" />
-                    <input type="text" placeholder="Content*" />
-                    <input type="text" placeholder="Thumbnail*" />
-                    <input type="text" placeholder="Media (URL)" />
-                    <input type="text" placeholder="Lead Story*" />
-                    <button type="submit">Add</button>
-                </form>
-            </div>
         )
     }
 
@@ -88,7 +76,7 @@ export default function Dashboard() {
         if (data) {
             return (
                 <div>
-                    {showArticlesLogged(data.title, data.content, data.thumbnail, data.id)}
+                    {data.map((article) => showArticlesLogged(article.title, article.content, article.thumbnailURL, article.id))}
                 </div>
             )
         }else{
@@ -103,8 +91,9 @@ export default function Dashboard() {
     return (
         <div>
             <h2>Dashboard</h2>
-            <button className='btn' onClick={addArticle}>Add Article</button>
+            <div className='container-articles'>
             {articlesDashboard()}
+            </div>
         </div>
     )
 }

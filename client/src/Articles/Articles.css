@@ -1,0 +1,133 @@
+.container-articles{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+.articles{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    gap: 15px;
+}
+
+.articles::before{
+    content: "";
+    width: 93%;
+    height: 0.5%;
+    left: 0;
+    margin-left: 3.5%;
+    position: absolute;
+    z-index:10;
+    background-color: #FFD550;
+    border-radius: 2px;
+}
+
+.articles h3{
+    font-size: 1.5rem;
+    text-align: left;
+    font-family: 'Gloock', serif;
+    font-weight: 50;
+    margin: 2rem 0 0 3.5%;
+  
+}
+.blur{
+    top: -2rem;
+    height: 2rem;
+    width: 100%;
+    position: relative;
+    /* opacity: 0.5; */
+    background-color: black;
+    filter: blur(14px);
+}
+.abovetext{
+    position: relative;
+    z-index: 2;
+    height: 4rem;
+}
+
+.blackdiv{
+        height: 4rem;
+        width: 100%;
+        top: 1rem;
+        position: relative;
+    font-weight: 100;
+    margin: 2rem 0 0 0;
+    margin-top: 20px;
+}
+
+.articles p{
+    width: 100%;
+    max-height: 45px;
+    overflow: hidden;
+    padding: 0 1rem;
+}
+.articletext{
+    width: 100%;
+    max-height: 45px;
+    overflow: hidden;
+    font-size: 3vw;
+    text-align: justify;
+}
+.articles img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-width: fit-content;
+    margin: 0 auto;
+}
+.readmore{
+    text-decoration: none;
+    position: relative;
+    top: -4rem;
+    background: none;
+}
+.readmore p{
+    background: none;
+}
+.readmorebutton{
+    text-align: center;
+    background-color: #FFD550;
+    font-weight: bold;
+    padding: 0 14vw;
+    margin: 10px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.bx{
+    color: black;
+    background: none;
+}
+
+.readmore:hover{
+    background-color: #ffedb1;
+    color: black;
+}
+
+.articles button{
+    text-decoration: none;
+}
+
+.editbtn{
+    background-color: #FFD550;
+    color: black;
+    font-weight: bold;
+    padding: 0 14vw;
+    margin: 10px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.deletebtn{
+    background-color: #FFD550;
+    color: black;
+    font-weight: bold;
+    padding: 0 14vw;
+    margin: 10px;
+    border-radius: 10px;
+    transition: 0.5s;
+}

@@ -20,11 +20,11 @@ export default function Article() {
         getData();
       }, []);
     
-      function showArticles(title, content, thumbnail, id) {
+      function showArticles(title, content, thumbnailURL, id) {
         return (
-          <div>
+          <div className='articles'>
             <h3>{title}</h3>
-            <img src={thumbnail} alt={title} />
+            <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
             <p>{content}</p>
           </div>
         )
@@ -37,7 +37,9 @@ export default function Article() {
     return (
         <div>
             <h2>Each Article</h2>
-            {data && showArticles(data.title, data.content, data.thumbnail, data.id)}
+            <div className='container-articles'>
+            {data && showArticles(data.title, data.content, data.thumbnailURL, data.id)}
+            </div>
         </div>
     )
 }
