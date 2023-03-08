@@ -32,7 +32,7 @@ export default function Menu() {
     }
 
     function Menuu() {
-        if(token !== '0') {
+        if (token !== '0') {
             return (
                 <>
                     <Link to="/">Home</Link>
@@ -42,29 +42,43 @@ export default function Menu() {
         }
     }
 
+    function scrollMenu() {
+        var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+    }
+
 
     return (
         <>
-        <div className="navbar">
-            <header>
-                <nav>
+            <div className="topnav">
+                <header>
+                    <a href="#home" class="active">Logo</a>
+                    <div id="myLinks">
                         <Link to="/">Home</Link>
                         <a href="search">Search</a>
                         {showMenu()}
-                </nav>
-            </header>
-        </div>
+                    </div>
+                    <a href="javascript:void(0);" class="icon" onClick={scrollMenu}>
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </header>
 
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/user" element={<User />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/article/:id" element={<Article />} />
-            <Route path="/article" element={<Article />} />
-        </Routes>
+            </div>
+
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/logout" element={<Logout />} />
+                <Route path="/user" element={<User />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/article/:id" element={<Article />} />
+                <Route path="/article" element={<Article />} />
+            </Routes>
         </>
     )
 }
