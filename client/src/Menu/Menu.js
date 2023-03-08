@@ -60,7 +60,7 @@ export default function Menu() {
                         <a href="#home" className="active"><img class="logo" src="images/logo.PNG"></img></a>
                         <a href="#home" className="active textlogo">The Urban Commuter.</a>
                         
-                    <a href="javascript:void(0);" className="icon" onClick={scrollMenu}>
+                    <a href="" className="icon" onClick={scrollMenu}>
                         <i className="fa fa-bars"></i>
                     </a>
 
