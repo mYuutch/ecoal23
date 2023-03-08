@@ -56,15 +56,23 @@ export default function Menu() {
         <>
             <div className="topnav">
                 <header>
-                    <a href="#home" class="active">Logo</a>
+                    <div className="topmenu">
+                        <a href="#home" className="active">Logo</a>
+                        <a href="#home" className="active">Logo</a>
+                        
+                    <a href="javascript:void(0);" className="icon" onClick={scrollMenu}>
+                        <i className="fa fa-bars"></i>
+                    </a>
+
+
+                    </div>
+
                     <div id="myLinks">
                         <Link to="/">Home</Link>
                         <a href="search">Search</a>
                         {showMenu()}
                     </div>
-                    <a href="javascript:void(0);" class="icon" onClick={scrollMenu}>
-                        <i class="fa fa-bars"></i>
-                    </a>
+                    
                 </header>
 
             </div>

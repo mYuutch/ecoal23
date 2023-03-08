@@ -3,6 +3,14 @@
     background-color: #333;
     position: relative;
   }
+  .topmenu{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+  }
+  .topmenu a {
+    display: inline-block;
+  }
   
   .topnav #myLinks {
     display: none;
@@ -19,9 +27,6 @@
   .topnav a.icon {
     background: black;
     display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
   }
   
   .topnav a:hover {
