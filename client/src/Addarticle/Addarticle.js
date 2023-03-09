@@ -14,7 +14,7 @@ export default function Addarticle() {
     const [mediaType, setMediaType] = useState('');
     const [mediaURL, setMediaURL] = useState('');
     const [leadStory, setLeadStory] = useState('');
-    const [tags, setTags] = useState('');
+    const [tags, setTags] = useState([]);
     let id = 0;
     const [file, setFile] = useState(null);
     
@@ -29,13 +29,13 @@ export default function Addarticle() {
     formData.append("mediaType", mediaType);
     formData.append("mediaURL", mediaURL);
     formData.append("leadStory", 0);
-    formData.append("tags[]", "[1,2]", tags);
-    
-     const resp = await axios.post(UPLOAD_ENDPOINT, formData, {
+    formData.append("tags[]", tags);
+    const resp = await axios.post(UPLOAD_ENDPOINT, formData, {
       headers: {
           "content-type": "multipart/form-data",
         },
 	})
+    
     window.location.href = '/';
 }
 
@@ -56,7 +56,7 @@ export default function Addarticle() {
                         <option value="video">Video</option>
                         <option value="audio">Audio</option>
                     </select>
-                    <Addtags />
+                    <Addtags tags={tags} setTags={setTags} />
                     <h3>Media URL</h3>
                     <input type='text' onChange={(e) => setMediaURL(e.target.value)} />
                     <button onClick={addArticle}>Add Article</button>
