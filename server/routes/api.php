@@ -95,9 +95,24 @@ Route::get('/article/{id}/tags', function($id){
     return $a->tags;
 });
 
-//Create a tag 
+//Create a tag
+Route::post('/tag/create', function(Request $request){
+    Tag::create(["name" => $request->input('name')]);
+});
 
 //Link a tag to an article
+Route::get('/link/article/{article_id}/tag/{tag_id}', function($article_id, $tag_id){
+    $article = Article::findOrFail($article_id);
+    $tag = Tag::findOrFail($tag_id);
+    $article->tags()->attach([$tag->id]);
+});
+
+//Unlink a tag to an article
+Route::get('/link/article/{article_id}/tag/{tag_id}', function($article_id, $tag_id){
+    $article = Article::findOrFail($article_id);
+    $tag = Tag::findOrFail($tag_id);
+    $article->tags()->detach([$tag->id]);
+});
 
 Route::post('/register', [AuthController::class, 'register']);
 
