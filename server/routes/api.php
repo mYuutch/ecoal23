@@ -79,8 +79,14 @@ Route::get('/article/title/{title}', function($title){
 });
 
 //Get articles with a specific tag
-Route::get('/articles/tag/{tag}', function($tag){
+Route::get('/articles/tag/{id}', function($id){
+ $tag = Tag::findOrFail($id);
+ return $tag->articles;
+});
 
+//Get all Tags
+Route::get('/tags', function(){
+    return Tag::all();
 });
 
 // Get Tags of an article
