@@ -25,15 +25,16 @@ Route::get('/articles', function () {
 });
 
 // Create an article
-Route::post('/article', function(Request $request){
-
-    $f->$request->file('thumbnail')->hashName();
+Route::post('/article', function(Request $request) {
+    
+    
+    $f = $request->file('thumbnail')->hashName();
     $request->file('thumbnail')->move("upload", $f);
 
     $article = Article::create([
         "title" => $request->input('title'),
         "content" => $request->input('content'),
-        "thumbnailURL" => 'uploads/'.$f,
+        "thumbnailURL" => 'upload/'.$f,
         "mediaType" => $request->input('mediaType'),
         "mediaURL" => $request->input('mediaURL'),
         "leadStory" => $request->input('leadStory')

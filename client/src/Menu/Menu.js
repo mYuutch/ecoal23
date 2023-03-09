@@ -27,6 +27,7 @@ export default function Menu() {
             return (
                 <>
                     <Link to="/user">User</Link>
+                    <Link to="/search">Search</Link>
                     <Link to="/dashboard">Dashboard</Link>
                     <Link to="/addarticle">Add an Article</Link>
                     <Link to="/logout">Logout</Link>
