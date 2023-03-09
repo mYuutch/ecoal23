@@ -15,14 +15,6 @@ export default function Addtags() {
         setLoading(false);
         console.log(response);
     }
-
-    async function addTag() {
-        const response = (await axios.post('http://localhost:8000/api/article/'+id+'/tags', {
-            tags: [1, 2]
-        })).data;
-        console.log(response);
-    }
-
     useEffect(() => {
         getData();
     }, []);
@@ -43,9 +35,7 @@ export default function Addtags() {
     return (
         <div>
             <h2>Tags</h2>
-            <div className='container-tags'>
                 {data && data.map((tag) => showTags(tag.name, tag.id))}
-            </div>
         </div>
     )
 }

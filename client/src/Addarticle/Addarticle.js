@@ -17,9 +17,7 @@ export default function Addarticle() {
     const [file, setFile] = useState(null);
     
     async function addArticle(event) {
-    const response = (await axios.post('http://localhost:8000/api/article/'+id+'/tags', {
-        tags: [1, 2]
-    })).data;
+
 
         event.preventDefault();
     const formData = new FormData();
@@ -29,14 +27,14 @@ export default function Addarticle() {
     formData.append("mediaType", mediaType);
     formData.append("mediaURL", mediaURL);
     formData.append("leadStory", 0);
-
+    formData.append("tags[]", "[1,2]");
+    
      const resp = await axios.post(UPLOAD_ENDPOINT, formData, {
       headers: {
           "content-type": "multipart/form-data",
         },
 	})
     window.location.href = '/';
-    console.log(response);
 }
 
     return (
