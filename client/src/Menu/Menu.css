@@ -7,6 +7,9 @@
     display: flex;
     text-align: center;
     justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    z-index: 12;
   }
   .textlogo{
     font-family: 'Poppins', sans-serif;
@@ -23,6 +26,9 @@
   
   .topnav #myLinks {
     display: none;
+    position: fixed;
+    width: 100%;
+    z-index: 11;
   }
   
   .topnav a {
