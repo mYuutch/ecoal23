@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './Article.css';
 
 
 export default function Article() {
@@ -22,7 +23,7 @@ export default function Article() {
     
       function showArticles(title, content, thumbnailURL, id) {
         return (
-          <div className='articles'>
+          <div className='article'>
             <h3>{title}</h3>
             <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
             <p>{content}</p>
@@ -36,7 +37,7 @@ export default function Article() {
 
     return (
         <div>
-            <h2>Each Article</h2>
+            <h2>Article</h2>
             <div className='container-articles'>
             {data && showArticles(data.title, data.content, data.thumbnailURL, data.id)}
             </div>

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import './Search.css';
+
 
 
 export default function Search() {
@@ -27,6 +29,15 @@ export default function Search() {
           <h3>{title}</h3>
           <img src={'http://localhost:8000/' + thumbnailURL} alt={title} />
           <p>{content}</p>
+
+          <div className="abovetext">
+          <div className="blur"></div>
+          <a className="readmore" href={"/article/" + id}>
+            <p>Read more</p>
+            <button className='readmorebutton'><i class='bx bx-down-arrow-alt' ></i></button>
+          </a>
+        </div>
+
         </a>
       </div>
     )
@@ -37,6 +48,7 @@ export default function Search() {
   return (
     <div className="search">
       <h2>Search</h2>
+      
       <input type="text" value={search} onChange={handleChange} />
       <div className='container-articles'>
         {data && data.filter((article) => article.title.toLowerCase().includes(search.toLowerCase())).map((article) => displaySearch(article.title, article.content, article.thumbnailURL, article.id))}
