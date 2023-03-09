@@ -16,16 +16,16 @@ export default function Articles() {
     const response = (await axios.get('http://localhost:8000/api/articles')).data;
     setData(response);
     setLoading(false);
-    console.log(response[0]);
+    console.log(response);
   }
 
   useEffect(() => {
     getData();
   }, []);
 
-  function showArticlesLogged(title, content, leadStory, thumbnailURL, id) {
+  function showArticlesLogged(title, content, thumbnailURL, id) {
 
-    if (leadStory == true) {
+    
     return (
       <div className='articles'>
         <h3>{title}</h3>
@@ -41,17 +41,7 @@ export default function Articles() {
         </div>
       </div>
     )
-  } else {
-    return (
-      <div>
-        <p>
-          No articles.
-        </p>
-      </div>
-    )
   }
-  }
-  
 
   function showArticlesNotLogged(title, thumbnailURL, leadStory, id) {
 
