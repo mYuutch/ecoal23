@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
             'thumbnailURL' => '/ecoal.jpg',
             'mediaType' => 'image',
             'mediaURL' => '/ecoal.jpg',
-            'leadStory' => false    
+            'leadStory' => true   
         ]);
 
         

@@ -40,7 +40,7 @@ Route::post('/article', function(Request $request) {
         "leadStory" => $request->input('leadStory')
     ]);
 
-    $tags = [];
+    /*$tags = [];*/
     $tags = $request->input('tags');
     
     foreach ($tags as $tag ) {
@@ -148,6 +148,3 @@ Route::group([
     Route::put('/updateUsername', [AuthController::class, 'updateUsername']);
     
 });
-
-
-
