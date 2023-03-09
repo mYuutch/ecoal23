@@ -71,7 +71,7 @@ export default function Tag() {
               {data && data.map((article) => {
                 return (
                   <div>
-                    {showArticlesLogged(article.title, article.leadStory, article.content, article.thumbnailURL, article.id)}
+                    {showArticlesLogged(article.title, article.content, article.thumbnailURL, article.content, article.id)}
                     </div>
                 )
               })}
