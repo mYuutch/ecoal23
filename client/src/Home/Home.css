@@ -2,6 +2,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: black;
+    background: black;
     color: white;
+}
+
+.dark{
+    background: black;
+    color: white;
+}
+
+.light{
+    background: white;
+    color: black;
 }

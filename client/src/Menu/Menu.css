@@ -24,20 +24,6 @@
   .topmenu a {
     display: inline-block;
   }
-
-  /* #myLinks a:hover {
-    background-color: #ddd;
-    color: black;
-  } */
- 
-  /* .topnav #myLinks {
-    transition: 0.3s all ease-in-out;
-    display: none;
-    position: fixed;
-    width: 100%;
-    z-index: 11;
-  } */
-  
   .topnav a {
     color: white;
     padding: 20px 20px;

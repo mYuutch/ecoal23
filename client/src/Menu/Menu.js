@@ -12,10 +12,45 @@ import Search from "../Search/Search";
 import Tags from "../Tags/Tags";
 import Tag from "../Tags/Tag";
 import useCookie from 'react-use-cookie';
+import { useState } from "react";
 
 export default function Menu() {
     const [token, setUserToken] = useCookie('token', '0');
+    const [theme, setTheme] = useState('dark');
 
+    document.querySelector('*').classList.add('dark');
+    
+    function changeTheme() {
+        let body = document.querySelector('* , .articles');
+        let text = document.querySelectorAll('h2, h3, p');
+        let readmorep = document.querySelectorAll('.readmore');
+        
+        body.classList.toggle('light');
+        text.forEach((item) => {
+            item.classList.toggle('light');
+        })
+        readmorep.forEach((item) => {
+            item.classList.toggle('light');
+        })
+
+
+        // if (theme === 'light') {
+        //     body.style.background = 'black';
+        //     body.style.color = 'white';
+        //     text.forEach((item) => {
+        //         item.style.color = 'white';
+        //     })
+        //     setTheme('dark');
+        // } else {
+        //     body.style.background = 'white';
+        //     body.style.color = 'black';
+        //     text.forEach((item) => {
+        //         item.style.color = 'black';
+        //     })
+        //     setTheme('light');
+        // }
+        
+    }
     function showMenu() {
         if (token === '0') {
             return (
@@ -25,6 +60,7 @@ export default function Menu() {
                     <li><Link to="/search" className="menu__item" onClick={scrollMenu}>All articles</Link></li>
                     <li> <Link to="/login" className="menu__item" onClick={scrollMenu}>Login</Link></li>
                     <li> <Link to="/register" className="menu__item" onClick={scrollMenu}>Register</Link></li>
+                    <li> <Link to="" className="menu__item" onClick={changeTheme}>Theme</Link></li>
                 </>
             )
         } else {
@@ -37,6 +73,7 @@ export default function Menu() {
                     <li>  <Link to="/dashboard" className="menu__item" onClick={scrollMenu}>Dashboard</Link></li>
                     <li>  <Link to="/addarticle" className="menu__item" onClick={scrollMenu}>Add an Article</Link></li>
                     <li> <Link to="/logout" className="menu__item" onClick={scrollMenu}>Logout</Link></li>
+                    <li> <Link to="" className="menu__item" onClick={changeTheme}>Theme</Link></li>
                 </>
             )
         }
