@@ -18,7 +18,7 @@ export default function Menu() {
         if (token === '0') {
             return (
                 <>
-                    
+
                     <Link to="/login" onClick={scrollMenu}>Login</Link>
                     <Link to="/register" onClick={scrollMenu}>Register</Link>
                 </>
@@ -36,24 +36,13 @@ export default function Menu() {
         }
     }
 
-    function Menuu() {
-        if (token !== '0') {
-            return (
-                <>
-                    
-                   
-                </>
-            )
-        }
-    }
-
     function scrollMenu() {
         var x = document.getElementById("myLinks");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
     }
 
     // menu close when you click on a link
@@ -66,20 +55,20 @@ export default function Menu() {
                     <div className="topmenu">
                         <a href="/" className="active"><img class="logo" src="/images/logo.PNG"></img></a>
                         <a href="/" className="active textlogo">The Urban Commuter</a>
-                        
-                    <a href="javascript:void(0);" className="icon" onClick={scrollMenu}>
-                        <i className="fa fa-bars"></i>
-                    </a>
+
+                        <a href="javascript:void(0);" className="icon" onClick={scrollMenu}>
+                            <i className="fa fa-bars"></i>
+                        </a>
 
 
                     </div>
 
                     <div id="myLinks">
                         <Link to="/" onClick={scrollMenu}>Home</Link>
-                        
+
                         {showMenu()}
                     </div>
-                    
+
                 </header>
 
             </div>
@@ -95,7 +84,7 @@ export default function Menu() {
                 <Route path="/addarticle" element={<Addarticle />} />
                 <Route path="/article/:id" element={<Article />} />
                 <Route path="/article" element={<Article />} />
-                
+
             </Routes>
         </>
     )
