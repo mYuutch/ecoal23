@@ -43,7 +43,10 @@ Route::post('/article', function(Request $request) {
     $tags = [];
     $tags = $request->input('tags');
     
-    dd($tags);
+    foreach ($tags as $tag ) {
+        $newTag = Tag::findOrFail($tag);
+        $article->tags()->attach([$newTag->id]);
+    }
 
 
     return response($article, 201);
