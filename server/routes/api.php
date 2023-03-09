@@ -40,6 +40,12 @@ Route::post('/article', function(Request $request) {
         "leadStory" => $request->input('leadStory')
     ]);
 
+    $tags = [];
+    $tags = $request->input('tags');
+    
+    dd($tags);
+
+
     return response($article, 201);
 });
 
@@ -108,13 +114,19 @@ Route::get('/link/article/{article_id}/tag/{tag_id}', function($article_id, $tag
 });
 
 
+//Unlink a tag to an article
 Route::get('/unlink/article/{article_id}/tag/{tag_id}', function($article_id, $tag_id){
     $article = Article::findOrFail($article_id);
     $tag = Tag::findOrFail($tag_id);
     $article->tags()->detach([$tag->id]);
 });
 
-//Unlink a tag to an article
+Route::put('article/{id}', function(Request $request, $id){
+    $article = Article::findOrFail($id);
+    $article->title = $request->input('title');
+    $article->content = $request->input('content');
+    $article->save();
+});
 
 
 Route::post('/register', [AuthController::class, 'register']);
