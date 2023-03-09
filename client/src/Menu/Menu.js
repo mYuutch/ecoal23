@@ -75,7 +75,7 @@ export default function Menu() {
 
                     <div id="myLinks">
                         <Link to="/" onClick={scrollMenu}>Home</Link>
-                        
+                        <Link to="/search" onClick={scrollMenu}>Search</Link>
                         {showMenu()}
                     </div>
                     
@@ -94,6 +94,7 @@ export default function Menu() {
                 <Route path="/addarticle" element={<Addarticle />} />
                 <Route path="/article/:id" element={<Article />} />
                 <Route path="/article" element={<Article />} />
+                <Route path="/Search" element={<Search />} />
                 
             </Routes>
         </>
