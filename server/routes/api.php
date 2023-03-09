@@ -95,14 +95,9 @@ Route::get('/article/{id}/tags', function($id){
     return $a->tags;
 });
 
-//Add Tags to an article
-Route::get('/article/{id}/tags/add/{tag}', function($id, $tag){
-    $a = Article::findOrFail($id);
-    dd($a->tags);
-});
+//Create a tag 
 
-
-
+//Link a tag to an article
 
 Route::post('/register', [AuthController::class, 'register']);
 

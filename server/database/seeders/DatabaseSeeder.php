@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $article1 =  Article::create([
-            'title' => 'Welcome to ecoal23',
+            'title' => 'Cet article a le tag Regulations et Products',
             'content' => '<h1>Hello from ecoal</h1><p>Nice to see you in <strong>Lens</strong>. Enjoy !</p>',
             'thumbnailURL' => '/ecoal.jpg',
             'mediaType' => 'image',
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $article2 =  Article::create([
-            'title' => 'Welcome to ecoal23',
+            'title' => 'Cet article a le tag Adventures',
             'content' => '<h1>Hello from ecoal</h1><p>Nice to see you in <strong>Lens</strong>. Enjoy !</p>',
             'thumbnailURL' => '/ecoal.jpg',
             'mediaType' => 'image',
@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $article3 =  Article::create([
-            'title' => 'Welcome to ecoal23',
+            'title' => 'Cet article a le tag Advantages',
             'content' => '<h1>Hello from ecoal</h1><p>Nice to see you in <strong>Lens</strong>. Enjoy !</p>',
             'thumbnailURL' => '/ecoal.jpg',
             'mediaType' => 'image',
@@ -51,12 +51,14 @@ class DatabaseSeeder extends Seeder
 
         
      
-        $tag1 = Tag::create(['name' => 'ecoal23']);
-        $tag2 = Tag::create(['name' => 'react']);
+        $tag1 = Tag::create(['name' => 'Regulations']);
+        $tag2 = Tag::create(['name' => 'Products']);
+        $tag3 = Tag::create(['name' => 'Adventures']);
+        $tag4 = Tag::create(['name' => 'Advantages']);
 
         $article1->tags()->attach([$tag1->id, $tag2->id]);
-        $article2->tags()->attach([$tag1->id, $tag2->id]);
-        $article3->tags()->attach([$tag1->id, $tag2->id]);
+        $article2->tags()->attach([$tag3->id]);
+        $article3->tags()->attach([$tag4->id]);
        
     }
 }
