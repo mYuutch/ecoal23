@@ -17,7 +17,7 @@ export default function User() {
         render (
             <div>
                 <input type="text" placeholder="New username" />
-                <input type="button" value="Change" onSubmit={} />
+                <input type="button" value="Change" />
             </div>
         )
         }
