@@ -107,12 +107,15 @@ Route::get('/link/article/{article_id}/tag/{tag_id}', function($article_id, $tag
     $article->tags()->attach([$tag->id]);
 });
 
-//Unlink a tag to an article
-Route::get('/link/article/{article_id}/tag/{tag_id}', function($article_id, $tag_id){
+
+Route::get('/unlink/article/{article_id}/tag/{tag_id}', function($article_id, $tag_id){
     $article = Article::findOrFail($article_id);
     $tag = Tag::findOrFail($tag_id);
     $article->tags()->detach([$tag->id]);
 });
+
+//Unlink a tag to an article
+
 
 Route::post('/register', [AuthController::class, 'register']);
 
