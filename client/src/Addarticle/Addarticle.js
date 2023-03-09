@@ -13,6 +13,8 @@ export default function Addarticle() {
     const [token, setUserToken] = useCookie('token', '0');
     const [mediaType, setMediaType] = useState('');
     const [mediaURL, setMediaURL] = useState('');
+    const [leadStory, setLeadStory] = useState('');
+    const [tags, setTags] = useState('');
     let id = 0;
     const [file, setFile] = useState(null);
     
