@@ -26,10 +26,14 @@ Route::get('/articles', function () {
 
 // Create an article
 Route::post('/article', function(Request $request){
+
+    $f->$request->file('thumbnail')->hashName();
+    $request->file('thumbnail')->move("upload", $f);
+
     $article = Article::create([
         "title" => $request->input('title'),
         "content" => $request->input('content'),
-        "thumbnailURL" => $request->input('thumbnailURL'),
+        "thumbnailURL" => 'uploads/'.$f,
         "mediaType" => $request->input('mediaType'),
         "mediaURL" => $request->input('mediaURL'),
         "leadStory" => $request->input('leadStory')
@@ -40,7 +44,7 @@ Route::post('/article', function(Request $request){
 
 //Get a specific article
 Route::get('/article/{id}', function($id){
-    return App\Models\Article::find($id);
+    return App\Models\Article::findOrFail($id);
 });
 
 
@@ -87,7 +91,7 @@ Route::get('/article/{id}/tags', function($id){
 //Add Tags to an article
 Route::get('/article/{id}/tags/add/{tag}', function($id, $tag){
     $a = Article::findOrFail($id);
-    dd($a->tags());
+    dd($a->tags);
 });
 
 
