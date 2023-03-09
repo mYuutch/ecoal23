@@ -25,7 +25,7 @@ export default function Articles() {
 
   function showArticlesLogged(title, content, leadStory, thumbnailURL, id) {
 
-    if (content == 1 || id == '1') {
+    if (content == 1) {
     return (
       <div className='articles'>
         <h3>{title}</h3>
@@ -41,8 +41,26 @@ export default function Articles() {
         </div>
       </div>
     )
+    }; 
+    
+    if (id == '1') {
+      return (
+        <div className='lead-article'>
+          <h3>{title}</h3>
+          <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
+          <p className="articletext">{leadStory}</p>
+  
+          <div className="abovetext">
+            <div className="blur"></div>
+            <a className="readmore" href={"/article/" + id}>
+              <p>Read more</p>
+              <button className='readmorebutton'><i class='bx bx-down-arrow-alt' ></i></button>
+            </a>
+          </div>
+        </div>
+      )
     }
-  }
+}
 
   function showArticlesNotLogged(title, thumbnailURL, leadStory, id) {
 

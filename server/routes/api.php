@@ -27,7 +27,6 @@ Route::get('/articles', function () {
 // Create an article
 Route::post('/article', function(Request $request) {
     
-    
     $f = $request->file('thumbnail')->hashName();
     $request->file('thumbnail')->move("upload", $f);
 
@@ -41,10 +40,10 @@ Route::post('/article', function(Request $request) {
     ]);
 
     /*$tags = [];*/
-    $tags = $request->input('tags');
-    
+    $tmp = $request->input('tags');
+    $tags = explode(",", $tmp);
     foreach ($tags as $tag ) {
-        $newTag = Tag::findOrFail($tag);
+        $newTag = Tag::find($tag);
         $article->tags()->attach([$newTag->id]);
     }
 

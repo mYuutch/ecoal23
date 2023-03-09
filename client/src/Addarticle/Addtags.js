@@ -33,8 +33,8 @@ export default function Addtags(props) {
     function showTags(name, id) {
         return (
             <div className='tags'>
-                <label for={id}>{name}</label>
-                <input type="checkbox" id={id} name={name} value={id} onChange={(e) => {manageTags(e.target.value)}} />
+                <label htmlFor={id}>{name}</label>
+                <input type="checkbox" id={id} name={'tags[]'} value={id} onChange={(e) => {manageTags(e.target.value)}} />
             </div>
         )
     }
