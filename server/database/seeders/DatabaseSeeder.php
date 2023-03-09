@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'thumbnailURL' => '/ecoal.jpg',
             'mediaType' => 'image',
             'mediaURL' => '/ecoal.jpg',
-            'leadStory' => true    
+            'leadStory' => false    
         ]);
 
         $article2 =  Article::create([
@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
             'thumbnailURL' => '/ecoal.jpg',
             'mediaType' => 'image',
             'mediaURL' => '/ecoal.jpg',
-            'leadStory' => true    
+            'leadStory' => true   
         ]);
 
         $article3 =  Article::create([
@@ -48,6 +48,17 @@ class DatabaseSeeder extends Seeder
             'mediaURL' => '/ecoal.jpg',
             'leadStory' => true   
         ]);
+
+
+        $article4 =  Article::create([
+            'title' => 'Cet article a le tag Advantages',
+            'content' => '<h1>Hello from ecoal</h1><p>Nice to see you in <strong>Lens</strong>. Enjoy !</p>',
+            'thumbnailURL' => '/ecoal.jpg',
+            'mediaType' => 'image',
+            'mediaURL' => '/ecoal.jpg',
+            'leadStory' => true   
+        ]);
+
 
         
      
