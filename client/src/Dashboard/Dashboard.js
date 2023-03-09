@@ -25,11 +25,13 @@ export default function Dashboard() {
        
         function deleteArticle() {
             axios.delete('http://localhost:8000/api/article/' + id)
-                .then(res => {
-                    console.log(res);
-                    console.log(res.data);
-                    window.location.reload();
+                .then(response => {
+                    console.log(response);
                 })
+                .catch(error => {
+                    console.log(error);
+                })
+                
         }
 
         function editArticle() {
@@ -65,7 +67,7 @@ export default function Dashboard() {
         </div>
       </div>
             <div>
-                <button className='editbtn' onClick={editArticle}>Edit</button>
+                {/* <button className='editbtn' onClick={editArticle}>Edit</button> */}
                 <button className='deletebtn' onClick={deleteArticle}>Delete</button>
             </div>
             </>
