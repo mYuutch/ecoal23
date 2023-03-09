@@ -1,0 +1,14 @@
+button{
+    background-color: #FFD550;
+    color: black;
+    border-radius: 1rem;
+    font-family: 'Poppins';
+}
+.tags{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}

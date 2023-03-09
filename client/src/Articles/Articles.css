@@ -15,6 +15,10 @@
     gap: 15px;
     text-decoration: none;
 }
+.articles input{
+    background-color: white;
+    border-radius: 2rem;
+}
 
 .articles::before{
     content: "";

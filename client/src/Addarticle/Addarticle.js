@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import useCookie from 'react-use-cookie';
-// import './Addarticle.css';
+import './Addarticle.css';
 import Addtags from './Addtags';
 
 export default function Addarticle() {
@@ -51,16 +51,19 @@ export default function Addarticle() {
                     <input type='text' onChange={(e) => setTitle(e.target.value)} />
                     <h3>Content</h3>
                     <input type='text' onChange={(e) => setContent(e.target.value)} />
-                    <h3>Thumbnail (only png or jpeg)</h3>
+                    <h3>Thumbnail (png or jpeg)</h3>
                     <input type='file'  accept='image/png, image/jpeg' id='thumbnail' name='thumbnail' onChange={(e) => setFile(e.target.files[0])}  />
-                    <h3>Media Type</h3>
+                    <div className='tags'>
+                    <Addtags tags={tags} setTags={setTags} />
+                    </div>
+                    <h3>Media Type (optional)</h3>
                     <select onChange={(e) => setMediaType(e.target.value)}>
                         <option value="image">Image</option>
                         <option value="video">Video</option>
                         <option value="audio">Audio</option>
                     </select>
-                    <Addtags tags={tags} setTags={setTags} />
-                    <h3>Media URL</h3>
+                    
+                    <h3>Media URL (optional)</h3>
                     <input type='text' onChange={(e) => setMediaURL(e.target.value)} />
                     <button onClick={addArticle}>Add Article</button>
                 </div>
