@@ -27,12 +27,14 @@ class ArticlesController extends Controller
         "leadStory" => $request->input('leadStory')
     ]);
 
-    $tags = $request->input('tags');
-    
+    $tmp = $request->input('tags');
+    $tags = explode(",", $tmp);
     foreach ($tags as $tag ) {
-        $newTag = Tag::findOrFail($tag);
+        $newTag = Tag::find($tag);
         $article->tags()->attach([$newTag->id]);
     }
+
+
     return response($article, 201);
     }
 
