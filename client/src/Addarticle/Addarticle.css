@@ -4,7 +4,7 @@ button{
     border-radius: 1rem;
     font-family: 'Poppins';
 }
-.tags{
+.addtags{
     position: relative;
     display: flex;
     flex-direction: column;

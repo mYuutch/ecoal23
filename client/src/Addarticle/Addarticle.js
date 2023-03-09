@@ -53,7 +53,7 @@ export default function Addarticle() {
                     <input type='text' onChange={(e) => setContent(e.target.value)} />
                     <h3>Thumbnail (png or jpeg)</h3>
                     <input type='file'  accept='image/png, image/jpeg' id='thumbnail' name='thumbnail' onChange={(e) => setFile(e.target.files[0])}  />
-                    <div className='tags'>
+                    <div className='addtags'>
                     <Addtags tags={tags} setTags={setTags} />
                     </div>
                     <h3>Media Type (optional)</h3>

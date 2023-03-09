@@ -62,7 +62,7 @@
 
 .article p{
     width: 100%;
-    text-align: justify;
+    text-align: left;
     overflow: hidden;
     padding: 0 1rem;
     text-indent: 1em;

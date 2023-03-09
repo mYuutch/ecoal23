@@ -37,7 +37,7 @@
     text-align: left;
     font-family: 'Gloock', serif;
     font-weight: 50;
-    margin: 2rem 3.5% 0 3.5%;
+    margin: 1rem 3.5% 0 3.5%;
   
 }
 .blur{
@@ -88,7 +88,7 @@
 .readmore{
     text-decoration: none;
     position: relative;
-    top: -4rem;
+    top: -3.5rem;
     background: none;
 }
 .readmore p{
@@ -99,7 +99,6 @@
     background-color: #FFD550;
     font-weight: bold;
     padding: 0 14vw;
-    margin: 10px;
     border-radius: 10px;
     transition: 0.5s;
 }

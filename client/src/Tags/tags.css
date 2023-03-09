@@ -13,7 +13,7 @@
     border-radius: 1rem;
     font-family: 'Poppins';
     font-weight: 100;
-    font-size: 5vw;
+    font-size: 1rem;
 }
 
 .tags a{
@@ -22,5 +22,5 @@
 }
 
 .tags{
-    width: clamp(42vw,15vw,15vw);
+    width: 11rem;
 }
