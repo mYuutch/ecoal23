@@ -78,7 +78,7 @@ Route::get('/article/title/{title}', function($title){
     return Article::where('title',$title)->get();
 });
 
-//Get articles with a specific tag   NOT DONE !!!!!! 
+//Get articles with a specific tag
 Route::get('/articles/tag/{tag}', function($tag){
 
 });
@@ -110,8 +110,8 @@ Route::group([
     Route::get('/user',  function (Request $request) {
                                 return $request->user();
                          });
-                         
-    Route::update('/updateUsername', [AuthController::class, 'updateUsername']);
+
+    Route::put('/updateUsername', [AuthController::class, 'updateUsername']);
     
 });
 
