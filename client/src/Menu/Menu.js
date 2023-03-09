@@ -9,6 +9,8 @@ import Article from "../Article/Article";
 import Addarticle from "../Addarticle/Addarticle";
 import User from "../User/User";
 import Search from "../Search/Search";
+import Tags from "../Tags/Tags";
+import Tag from "../Tags/Tag";
 import useCookie from 'react-use-cookie';
 
 export default function Menu() {
@@ -18,7 +20,6 @@ export default function Menu() {
         if (token === '0') {
             return (
                 <>
-
                     <Link to="/login" onClick={scrollMenu}>Login</Link>
                     <Link to="/register" onClick={scrollMenu}>Register</Link>
                 </>
@@ -26,8 +27,9 @@ export default function Menu() {
         } else {
             return (
                 <>
+                <Link to="/tags" onClick={scrollMenu}>Tags</Link>
+                <Link to="/search" onClick={scrollMenu}>Search</Link>
                     <Link to="/user" onClick={scrollMenu}>User</Link>
-                    <Link to="/search" onClick={scrollMenu}>Search</Link>
                     <Link to="/dashboard" onClick={scrollMenu}>Dashboard</Link>
                     <Link to="/addarticle" onClick={scrollMenu}>Add an Article</Link>
                     <Link to="/logout" onClick={scrollMenu}>Logout</Link>
@@ -84,6 +86,10 @@ export default function Menu() {
                 <Route path="/addarticle" element={<Addarticle />} />
                 <Route path="/article/:id" element={<Article />} />
                 <Route path="/article" element={<Article />} />
+                <Route path="/tags/:id" element={<Tags />} />
+                <Route path="/tags/" element={<Tags />} />
+                <Route path="/tag/:id" element={<Tag />} />
+                <Route path="/tag/" element={<Tag />} />
 
             </Routes>
         </>
