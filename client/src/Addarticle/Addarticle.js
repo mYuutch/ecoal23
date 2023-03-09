@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import useCookie from 'react-use-cookie';
 // import './Addarticle.css';
+import Addtags from './Addtags';
 
 export default function Addarticle() {
     const UPLOAD_ENDPOINT = "http://127.0.0.1:8000/api/article";
@@ -12,11 +13,15 @@ export default function Addarticle() {
     const [token, setUserToken] = useCookie('token', '0');
     const [mediaType, setMediaType] = useState('');
     const [mediaURL, setMediaURL] = useState('');
-    
+    const [leadStory, setLeadStory] = useState('');
+    const [tags, setTags] = useState('');
+    let id = 0;
     const [file, setFile] = useState(null);
-
+    
     async function addArticle(event) {
-            event.preventDefault();
+
+
+        event.preventDefault();
     const formData = new FormData();
     formData.append("thumbnail", file);
     formData.append("title", title); 
@@ -24,15 +29,15 @@ export default function Addarticle() {
     formData.append("mediaType", mediaType);
     formData.append("mediaURL", mediaURL);
     formData.append("leadStory", 0);
-
+    formData.append("tags[]", "[1,2]", tags);
+    
      const resp = await axios.post(UPLOAD_ENDPOINT, formData, {
       headers: {
           "content-type": "multipart/form-data",
-      },
+        },
 	})
-        window.location.href = '/';
-    }
-
+    window.location.href = '/';
+}
 
     return (
         <div>
@@ -51,6 +56,7 @@ export default function Addarticle() {
                         <option value="video">Video</option>
                         <option value="audio">Audio</option>
                     </select>
+                    <Addtags />
                     <h3>Media URL</h3>
                     <input type='text' onChange={(e) => setMediaURL(e.target.value)} />
                     <button onClick={addArticle}>Add Article</button>
