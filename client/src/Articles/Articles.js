@@ -23,14 +23,14 @@ export default function Articles() {
     getData();
   }, []);
 
-  function showArticlesLogged(title, content, thumbnailURL, id) {
+  function showArticlesLogged(title, content, leadStory, thumbnailURL, id) {
 
-    
+    if (content == 1) {
     return (
       <div className='articles'>
         <h3>{title}</h3>
         <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
-        <p className="articletext">{content}</p>
+        <p className="articletext">{leadStory}</p>
 
         <div className="abovetext">
           <div className="blur"></div>
@@ -41,26 +41,23 @@ export default function Articles() {
         </div>
       </div>
     )
+    } else {
+      return (
+        <div className='articles'>
+          <h3>no articles</h3>
+        </div>
+      )
+    }
   }
 
   function showArticlesNotLogged(title, thumbnailURL, leadStory, id) {
 
-    if (leadStory === true) {
       return (
         <div className='articles'>
         <h3>{title}</h3>
         <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
       </div>
       )
-    } else {
-      return (
-        <div>
-          <p>
-            No articles.
-          </p>
-        </div>
-      )
-    }
   }
 
 
@@ -85,7 +82,7 @@ export default function Articles() {
           {data && data.map((article) => {
             return (
               <div>
-                {showArticlesLogged(article.title, article.content, article.thumbnailURL, article.id)}
+                {showArticlesLogged(article.title, article.leadStory, article.content, article.thumbnailURL, article.id)}
                 </div>
             )
           })}

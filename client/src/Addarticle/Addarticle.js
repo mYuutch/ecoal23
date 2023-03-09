@@ -45,7 +45,7 @@ export default function Addarticle() {
                     <h3>Content</h3>
                     <input type='text' onChange={(e) => setContent(e.target.value)} />
                     <h3>Thumbnail (only png or jpeg)</h3>
-                    <input type='file'  accept='image/png, image/jpeg' id='thumbnailURL' onChange={changePath} />
+                    <input type='file'  accept='image/png, image/jpeg' id='thumbnail' name='thumbnail' onChange={changePath} />
                     <h3>Media Type</h3>
                     <select onChange={(e) => setMediaType(e.target.value)}>
                         <option value="image">Image</option>
