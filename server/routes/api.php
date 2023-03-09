@@ -110,6 +110,8 @@ Route::group([
     Route::get('/user',  function (Request $request) {
                                 return $request->user();
                          });
+                         
+    Route::update('/updateUsername', [AuthController::class, 'updateUsername']);
     
 });
 
