@@ -5,7 +5,7 @@ import useCookie from 'react-use-cookie';
 import Addtags from './Addtags';
 
 export default function Addarticle() {
-    const UPLOAD_ENDPOINT = "http://127.0.0.1:8000/api/article";
+    const UPLOAD_ENDPOINT = "http://127.0.0.1:8000/api/article/";
 
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -15,12 +15,9 @@ export default function Addarticle() {
     const [mediaURL, setMediaURL] = useState('');
     const [leadStory, setLeadStory] = useState('');
     const [tags, setTags] = useState([]);
-    let id = 0;
-    const [file, setFile] = useState(null);
-    
+    const [file, setFile] = useState();
+
     async function addArticle(event) {
-
-
         event.preventDefault();
     const formData = new FormData();
     formData.append("thumbnail", file);
@@ -29,12 +26,18 @@ export default function Addarticle() {
     formData.append("mediaType", mediaType);
     formData.append("mediaURL", mediaURL);
     formData.append("leadStory", 0);
-    formData.append("tags[]", tags);
+    formData.append("token", token);
+    
+    formData.append("tags", tags);
+    console.log(tags);
     const resp = await axios.post(UPLOAD_ENDPOINT, formData, {
       headers: {
           "content-type": "multipart/form-data",
+          "Accept": "application/json",
+          "Authorization": "Bearer " + token,
         },
 	})
+    console.log(resp)
     
     window.location.href = '/';
 }

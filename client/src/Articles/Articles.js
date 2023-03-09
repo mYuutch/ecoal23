@@ -41,7 +41,9 @@ export default function Articles() {
         </div>
       </div>
     )
-    } if (id == '1') {
+    }; 
+    
+    if (id == '1') {
       return (
         <div className='lead-article'>
           <h3>{title}</h3>
