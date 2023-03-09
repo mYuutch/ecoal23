@@ -2,7 +2,7 @@
     overflow: hidden;
     background-color: #333;
     position: relative;
-    margin-bottom: clamp(20vw,0vw,0vw);
+    margin-bottom: 5rem;
   }
   .topmenu{
     display: flex;
