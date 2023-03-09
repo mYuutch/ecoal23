@@ -25,7 +25,7 @@ export default function Articles() {
 
   function showArticlesLogged(title, content, leadStory, thumbnailURL, id) {
 
-    if (content == 1) {
+    if (content == 1 || id == '1') {
     return (
       <div className='articles'>
         <h3>{title}</h3>

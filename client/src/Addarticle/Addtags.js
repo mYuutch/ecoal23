@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 
-export default function Addtags() {
+export default function Addtags(props) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const { id } = useParams();
@@ -19,11 +19,22 @@ export default function Addtags() {
         getData();
     }, []);
 
+
+    function manageTags(tag) {
+        let tags = props.tags;
+        if (tags.includes(tag)) {
+            tags = tags.filter((t) => t !== tag);
+        } else {
+            tags.push(tag);
+        }
+        props.setTags(tags);
+    }
+
     function showTags(name, id) {
         return (
             <div className='tags'>
                 <label for={id}>{name}</label>
-                <input type="checkbox" id={id} name={name} value={id} />
+                <input type="checkbox" id={id} name={name} value={id} onChange={(e) => {manageTags(e.target.value)}} />
             </div>
         )
     }
