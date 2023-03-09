@@ -27,7 +27,7 @@ export default function Addarticle() {
     formData.append("mediaType", mediaType);
     formData.append("mediaURL", mediaURL);
     formData.append("leadStory", 0);
-    formData.append("tags[]", "[1,2]");
+    formData.append("tags[]", "[1,2]", tags);
     
      const resp = await axios.post(UPLOAD_ENDPOINT, formData, {
       headers: {
