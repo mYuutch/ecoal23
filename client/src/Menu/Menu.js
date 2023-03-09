@@ -75,7 +75,7 @@ export default function Menu() {
 
                     <div id="myLinks">
                         <Link to="/">Home</Link>
-                        <a href="search">Search</a>
+                        
                         {showMenu()}
                     </div>
                     
@@ -93,6 +93,7 @@ export default function Menu() {
                 <Route path="/addarticle" element={<Addarticle />} />
                 <Route path="/article/:id" element={<Article />} />
                 <Route path="/article" element={<Article />} />
+                
             </Routes>
         </>
     )
