@@ -34,7 +34,7 @@ export default function Search() {
           <div className="blur"></div>
           <a className="readmore" href={"/article/" + id}>
             <p>Read more</p>
-            <button className='readmorebutton'><i class='bx bx-down-arrow-alt' ></i></button>
+            <button className='readmorebutton'><i className='bx bx-down-arrow-alt' ></i></button>
           </a>
         </div>
 

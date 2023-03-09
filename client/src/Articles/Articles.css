@@ -18,6 +18,7 @@
 .articles input{
     background-color: white;
     border-radius: 2rem;
+    color: black;
 }
 
 .articles::before{

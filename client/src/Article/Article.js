@@ -26,7 +26,7 @@ export default function Article() {
           <div className='article'>
             <h3>{title}</h3>
             <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
-            <p>{content}</p>
+            <p dangerouslySetInnerHTML={{__html: content}}></p>
           </div>
         )
       }

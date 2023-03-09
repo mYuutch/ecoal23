@@ -36,7 +36,7 @@ export default function Articles() {
           <div className="blur"></div>
           <a className="readmore" href={"/article/" + id}>
             <p>Read more</p>
-            <button className='readmorebutton'><i class='bx bx-down-arrow-alt' ></i></button>
+            <button className='readmorebutton'><i className='bx bx-down-arrow-alt' ></i></button>
           </a>
         </div>
       </div>
@@ -54,7 +54,7 @@ export default function Articles() {
             <div className="blur"></div>
             <a className="readmore" href={"/article/" + id}>
               <p>Read more</p>
-              <button className='readmorebutton'><i class='bx bx-down-arrow-alt' ></i></button>
+              <button className='readmorebutton'><i className='bx bx-down-arrow-alt' ></i></button>
             </a>
           </div>
         </div>
@@ -70,6 +70,7 @@ export default function Articles() {
         <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
       </div>
       )
+
   }
 
 

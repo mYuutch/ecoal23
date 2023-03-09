@@ -28,7 +28,7 @@ export default function Menu() {
             return (
                 <>
                 <Link to="/tags" onClick={scrollMenu}>Tags</Link>
-                <Link to="/search" onClick={scrollMenu}>Search</Link>
+                <Link to="/search" onClick={scrollMenu}>All articles</Link>
                     <Link to="/user" onClick={scrollMenu}>User</Link>
                     <Link to="/dashboard" onClick={scrollMenu}>Dashboard</Link>
                     <Link to="/addarticle" onClick={scrollMenu}>Add an Article</Link>
@@ -55,7 +55,7 @@ export default function Menu() {
             <div className="topnav">
                 <header>
                     <div className="topmenu">
-                        <a href="/" className="active"><img class="logo" src="/images/logo.PNG"></img></a>
+                        <a href="/" className="active"><img className="logo" src="/images/logo.PNG"></img></a>
                         <a href="/" className="active textlogo">The Urban Commuter</a>
 
                         <a href="javascript:void(0);" className="icon" onClick={scrollMenu}>
