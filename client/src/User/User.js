@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { render } from '@testing-library/react';
 import { useParams } from 'react-router-dom';
+import "./User.css";
 
 export default function User() {
     const [token, setUserToken] = useCookie('token', '0');
@@ -42,8 +43,8 @@ export default function User() {
         return (
             <div>
                 <p>{loading && 'Loading...'}</p>
-                <h3>{name}</h3>
-                <p>{email}</p>
+                <h3>Username: {name}</h3>
+                <p>Email: {email}</p>
             </div>
         )
     }
@@ -71,11 +72,13 @@ export default function User() {
     }
 
     return (
-        <div>
-            <h2>User</h2>
+        <div className="userdiv">
+            <h2>User page</h2>
             {data && displayUser(data.name, data.email, data.id)}
-            <label>Change username</label>
+            <div className='changeusername'>
+            <label>Change username:</label>
             <input type="text" onChange={(e) => setName(e.target.value)} />
+            </div>
             <button onClick={changeName}>Change username</button>
         </div>
     )
