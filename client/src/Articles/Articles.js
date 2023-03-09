@@ -41,12 +41,6 @@ export default function Articles() {
         </div>
       </div>
     )
-    } else {
-      return (
-        <div className='articles'>
-          <h3>no articles</h3>
-        </div>
-      )
     }
   }
 
