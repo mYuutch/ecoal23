@@ -1,0 +1,24 @@
+.container-tags{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tags a h3{
+    padding: 5vw;
+    border: 1px solid white;
+    border-radius: 1rem;
+    font-family: 'Poppins';
+    font-weight: 100;
+}
+
+.tags a{
+    text-decoration: none;
+
+}
+
+.tags{
+    width: 10rem;
+}
