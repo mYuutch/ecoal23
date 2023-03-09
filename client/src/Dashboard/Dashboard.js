@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../Articles/Articles.css'
 
@@ -8,7 +8,7 @@ export default function Dashboard() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const { id } = useParams();
-
+    const navigate = useNavigate();
 
     async function getData() {
         setLoading(true);
@@ -27,11 +27,12 @@ export default function Dashboard() {
             axios.delete('http://localhost:8000/api/article/' + id)
                 .then(response => {
                     console.log(response);
+                    window.location.reload();
                 })
                 .catch(error => {
                     console.log(error);
                 })
-                
+
         }
 
         function editArticle() {
@@ -66,8 +67,7 @@ export default function Dashboard() {
           </a>
         </div>
       </div>
-            <div>
-                {/* <button className='editbtn' onClick={editArticle}>Edit</button> */}
+            <div className='deletediv'>
                 <button className='deletebtn' onClick={deleteArticle}>Delete</button>
             </div>
             </>
