@@ -25,15 +25,16 @@ Route::get('/articles', function () {
 });
 
 // Create an article
-Route::post('/article', function(Request $request){
-
-    $f->$request->file('thumbnail')->hashName();
+Route::post('/article', function(Request $request) {
+    
+    
+    $f = $request->file('thumbnail')->hashName();
     $request->file('thumbnail')->move("upload", $f);
 
     $article = Article::create([
         "title" => $request->input('title'),
         "content" => $request->input('content'),
-        "thumbnailURL" => 'uploads/'.$f,
+        "thumbnailURL" => 'upload/'.$f,
         "mediaType" => $request->input('mediaType'),
         "mediaURL" => $request->input('mediaURL'),
         "leadStory" => $request->input('leadStory')
@@ -77,9 +78,15 @@ Route::get('/article/title/{title}', function($title){
     return Article::where('title',$title)->get();
 });
 
-//Get articles with a specific tag   NOT DONE !!!!!! 
-Route::get('/articles/tag/{tag}', function($tag){
+//Get articles with a specific tag
+Route::get('/articles/tag/{id}', function($id){
+ $tag = Tag::findOrFail($id);
+ return $tag->articles;
+});
 
+//Get all Tags
+Route::get('/tags', function(){
+    return Tag::all();
 });
 
 // Get Tags of an article
@@ -88,13 +95,26 @@ Route::get('/article/{id}/tags', function($id){
     return $a->tags;
 });
 
-//Add Tags to an article
-Route::get('/article/{id}/tags/add/{tag}', function($id, $tag){
-    $a = Article::findOrFail($id);
-    dd($a->tags);
+//Create a tag
+Route::post('/tag/create', function(Request $request){
+    Tag::create(["name" => $request->input('name')]);
+});
+
+//Link a tag to an article
+Route::get('/link/article/{article_id}/tag/{tag_id}', function($article_id, $tag_id){
+    $article = Article::findOrFail($article_id);
+    $tag = Tag::findOrFail($tag_id);
+    $article->tags()->attach([$tag->id]);
 });
 
 
+Route::get('/unlink/article/{article_id}/tag/{tag_id}', function($article_id, $tag_id){
+    $article = Article::findOrFail($article_id);
+    $tag = Tag::findOrFail($tag_id);
+    $article->tags()->detach([$tag->id]);
+});
+
+//Unlink a tag to an article
 
 
 Route::post('/register', [AuthController::class, 'register']);
@@ -109,6 +129,8 @@ Route::group([
     Route::get('/user',  function (Request $request) {
                                 return $request->user();
                          });
+
+    Route::put('/updateUsername', [AuthController::class, 'updateUsername']);
     
 });
 

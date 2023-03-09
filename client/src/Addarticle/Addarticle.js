@@ -4,6 +4,7 @@ import useCookie from 'react-use-cookie';
 // import './Addarticle.css';
 
 export default function Addarticle() {
+    const UPLOAD_ENDPOINT = "http://127.0.0.1:8000/api/article";
 
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
@@ -11,27 +12,25 @@ export default function Addarticle() {
     const [token, setUserToken] = useCookie('token', '0');
     const [mediaType, setMediaType] = useState('');
     const [mediaURL, setMediaURL] = useState('');
+    
+    const [file, setFile] = useState(null);
 
-    async function addArticle() {
-        const response = await axios.post('http://localhost:8000/api/article', {
-            title: title,
-            content: content,
-            thumbnailURL: thumbnailURL,
-            mediaType : mediaType,
-            mediaURL : mediaURL,
-            leadStory: true,
-            token: token
-        });
-        console.log(response);
+    async function addArticle(event) {
+            event.preventDefault();
+    const formData = new FormData();
+    formData.append("thumbnail", file);
+    formData.append("title", title); 
+    formData.append("content", content);
+    formData.append("mediaType", mediaType);
+    formData.append("mediaURL", mediaURL);
+    formData.append("leadStory", 0);
+
+     const resp = await axios.post(UPLOAD_ENDPOINT, formData, {
+      headers: {
+          "content-type": "multipart/form-data",
+      },
+	})
         window.location.href = '/';
-    }
-
-    function changePath() {
-        const file = document.getElementById('thumbnailURL');
-        const path = file.value;
-        const filename = path.replace(/^.*\\/, "");
-        console.log(filename);
-        setThumbnailURL(filename);
     }
 
 
@@ -45,7 +44,7 @@ export default function Addarticle() {
                     <h3>Content</h3>
                     <input type='text' onChange={(e) => setContent(e.target.value)} />
                     <h3>Thumbnail (only png or jpeg)</h3>
-                    <input type='file'  accept='image/png, image/jpeg' id='thumbnail' name='thumbnail' onChange={changePath} />
+                    <input type='file'  accept='image/png, image/jpeg' id='thumbnail' name='thumbnail' onChange={(e) => setFile(e.target.files[0])}  />
                     <h3>Media Type</h3>
                     <select onChange={(e) => setMediaType(e.target.value)}>
                         <option value="image">Image</option>
