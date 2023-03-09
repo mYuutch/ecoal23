@@ -19,17 +19,17 @@ export default function Menu() {
             return (
                 <>
                     
-                    <Link to="/login">Login</Link>
-                    <Link to="/register">Register</Link>
+                    <Link to="/login" onClick={scrollMenu}>Login</Link>
+                    <Link to="/register" onClick={scrollMenu}>Register</Link>
                 </>
             )
         } else {
             return (
                 <>
-                    <Link to="/user">User</Link>
-                    <Link to="/dashboard">Dashboard</Link>
-                    <Link to="/addarticle">Add an Article</Link>
-                    <Link to="/logout">Logout</Link>
+                    <Link to="/user" onClick={scrollMenu}>User</Link>
+                    <Link to="/dashboard" onClick={scrollMenu}>Dashboard</Link>
+                    <Link to="/addarticle" onClick={scrollMenu}>Add an Article</Link>
+                    <Link to="/logout" onClick={scrollMenu}>Logout</Link>
                 </>
             )
         }
@@ -74,7 +74,7 @@ export default function Menu() {
                     </div>
 
                     <div id="myLinks">
-                        <Link to="/">Home</Link>
+                        <Link to="/" onClick={scrollMenu}>Home</Link>
                         
                         {showMenu()}
                     </div>
