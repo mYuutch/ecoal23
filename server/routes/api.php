@@ -124,6 +124,8 @@ Route::get('/unlink/article/{article_id}/tag/{tag_id}', function($article_id, $t
     $article->tags()->detach([$tag->id]);
 });
 
+
+//Update an article
 Route::put('article/{id}', function(Request $request, $id){
     $article = Article::findOrFail($id);
     $article->title = $request->input('title');
