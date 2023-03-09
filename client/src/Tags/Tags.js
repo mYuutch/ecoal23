@@ -37,7 +37,7 @@ export default function Tags() {
 
     return (
         <div>
-            <h2>Tags</h2>
+            <h2>Categories</h2>
             <div className='container-tags'>
                 {data && data.map((tag) => showTags(tag.name, tag.id))}
             </div>

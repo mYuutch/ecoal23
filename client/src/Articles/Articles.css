@@ -21,6 +21,29 @@
     color: black;
 }
 
+.articles textarea{
+    background-color: white;
+    color: black;
+}
+
+.tags{
+    display: flex;
+    align-items: center;
+}
+
+.addtags{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 0 0 1rem;
+}
+
+.tags label {
+    text-align: center;
+    width: 100%;
+}
+
 .articles::before{
     content: "";
     width: 93%;

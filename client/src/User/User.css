@@ -1,7 +1,66 @@
-
-.changeusername{
+.User-infos {
     display: flex;
     flex-direction: column;
-    margin: auto;
-    width: 10rem;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.User-infos p::after {
+    content: "";
+    width: 83%;
+    height: 0.5%;
+    left: 0;
+    margin-top: 13%;
+    margin-left: 9.5%;
+    position: absolute;
+    background-color: #FFD550;
+    border-radius: 2px;
+}
+
+.User-infos p {
+    gap: 10px;
+    margin-top: 10px;
+    text-decoration: #FFD550 underline;
+}
+
+.changeusername {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    margin-top: 40px;
+    gap: 10px;
+    text-align: left;
+}
+
+.changeusername input {
+    background-color: white;
+    color: black;
+    font-size: 1.2rem;
+}
+
+.changeusername label {
+    text-align: center;
+    width: 100%;
+    text-decoration: underline #FFD550;
+    font-size: 1.3rem;
+}
+
+.changeusername button {
+    background-color: #FFD550;
+    color: black;
+    font-size: 1rem;
+    border-radius: 2rem;
+    border: none;
+    padding: 10px;
+    margin: 10px 0 0 0;
 }

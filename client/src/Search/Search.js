@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './Search.css';
+import useCookie from 'react-use-cookie';
 
 
 
 export default function Search() {
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [userToken, setUserToken] = useCookie('token', '0');
 
   function handleChange(event) {
     setSearch(event.target.value);
@@ -22,25 +25,69 @@ export default function Search() {
     getData();
   }, [search]);
 
-  function displaySearch(title, content, thumbnailURL, id) {
+  function showArticlesLogged(title, content, thumbnailURL, id, leadStory) {
     return (
-      <div className='articles'>
-        <a className="articles" href={"/article/" + id}>
-          <h3>{title}</h3>
-          <img src={'http://localhost:8000/' + thumbnailURL} alt={title} />
-          <p>{content}</p>
+        <div className='articles'>
+        <h3>{title}</h3>
+        <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
+        <p className="articletext">{content}</p>
 
-          <div className="abovetext">
+        <div className="abovetext">
           <div className="blur"></div>
           <a className="readmore" href={"/article/" + id}>
-            <p>Read more</p>
             <button className='readmorebutton'><i className='bx bx-down-arrow-alt' ></i></button>
           </a>
         </div>
-
-        </a>
       </div>
     )
+}
+
+function showArticlesNotLogged(title, thumbnailURL, leadStory, id) {
+    return (
+      <div className='articles'>
+      <h3>{title}</h3>
+      <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
+    </div>
+    )
+
+}
+
+function allArticles() {
+    if (userToken === '0') {
+      return (
+        <div>
+          {/* map the data */}
+          {data && data.map((article) => {
+            return (
+              <div>
+                {/* filter the data */}
+                {article.title.toLowerCase().includes(search.toLowerCase()) && showArticlesNotLogged(article.title, article.thumbnailURL, article.leadStory, article.id)}
+                </div>
+            )
+          })}
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          {/* map the data */}
+          {data && data.map((article) => {
+            return (
+              <div>
+                {/* filter the data */}
+                {article.title.toLowerCase().includes(search.toLowerCase()) && showArticlesLogged(article.title, article.content, article.thumbnailURL, article.id, article.leadStory)}
+                </div>
+            )
+          })}
+        </div>
+      )
+    }
+  }
+
+  if (loading) {
+    return <p>Loading...</p>;
+  } else {
+    allArticles();
   }
 
 
@@ -48,10 +95,9 @@ export default function Search() {
   return (
     <div className="search">
       <h2>Search</h2>
-      
       <input type="text" value={search} onChange={handleChange} />
       <div className='container-articles'>
-        {data && data.filter((article) => article.title.toLowerCase().includes(search.toLowerCase())).map((article) => displaySearch(article.title, article.content, article.thumbnailURL, article.id))}
+        {allArticles()}
         </div>
     </div>
   )

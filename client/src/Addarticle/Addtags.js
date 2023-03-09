@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import '../Articles/Articles.css';
 
 
 export default function Addtags(props) {
@@ -34,7 +35,7 @@ export default function Addtags(props) {
         return (
             <div className='tags'>
                 <label htmlFor={id}>{name}</label>
-                <input type="checkbox" id={id} name={'tags[]'} value={id} onChange={(e) => {manageTags(e.target.value)}} />
+                <input type="checkbox" id={id} name={'tags[]'} value={id} onChange={(e) => { manageTags(e.target.value) }} />
             </div>
         )
     }
@@ -44,9 +45,9 @@ export default function Addtags(props) {
     }
 
     return (
-        <div>
-            <h2>Tags</h2>
+        <>
+                <h3>Tags</h3>
                 {data && data.map((tag) => showTags(tag.name, tag.id))}
-        </div>
+        </>
     )
 }

@@ -20,19 +20,23 @@ export default function Menu() {
         if (token === '0') {
             return (
                 <>
-                    <Link to="/login" onClick={scrollMenu}>Login</Link>
-                    <Link to="/register" onClick={scrollMenu}>Register</Link>
+                    <li><Link to="/" className="menu__item" onClick={scrollMenu}>Home</Link></li>
+                    <li><Link to="/tags" className="menu__item" onClick={scrollMenu}>Categories</Link></li>
+                    <li><Link to="/search" className="menu__item" onClick={scrollMenu}>All articles</Link></li>
+                    <li> <Link to="/login" className="menu__item" onClick={scrollMenu}>Login</Link></li>
+                    <li> <Link to="/register" className="menu__item" onClick={scrollMenu}>Register</Link></li>
                 </>
             )
         } else {
             return (
                 <>
-                <Link to="/tags" onClick={scrollMenu}>Tags</Link>
-                <Link to="/search" onClick={scrollMenu}>All articles</Link>
-                    <Link to="/user" onClick={scrollMenu}>User</Link>
-                    <Link to="/dashboard" onClick={scrollMenu}>Dashboard</Link>
-                    <Link to="/addarticle" onClick={scrollMenu}>Add an Article</Link>
-                    <Link to="/logout" onClick={scrollMenu}>Logout</Link>
+                    <li><Link to="/" className="menu__item" onClick={scrollMenu}>Home</Link></li>
+                    <li><Link to="/tags" className="menu__item" onClick={scrollMenu}>Categories</Link></li>
+                    <li><Link to="/search" className="menu__item" onClick={scrollMenu}>All articles</Link></li>
+                    <li><Link to="/user" className="menu__item" onClick={scrollMenu}>User</Link></li>
+                    <li>  <Link to="/dashboard" className="menu__item" onClick={scrollMenu}>Dashboard</Link></li>
+                    <li>  <Link to="/addarticle" className="menu__item" onClick={scrollMenu}>Add an Article</Link></li>
+                    <li> <Link to="/logout" className="menu__item" onClick={scrollMenu}>Logout</Link></li>
                 </>
             )
         }
@@ -50,6 +54,7 @@ export default function Menu() {
     // menu close when you click on a link
 
 
+
     return (
         <>
             <div className="topnav">
@@ -58,18 +63,18 @@ export default function Menu() {
                         <a href="/" className="active"><img className="logo" src="/images/logo.PNG"></img></a>
                         <a href="/" className="active textlogo">The Urban Commuter</a>
 
-                        <a href="javascript:void(0);" className="icon" onClick={scrollMenu}>
-                            <i className="fa fa-bars"></i>
-                        </a>
-
+                        <div className="hamburger-menu">
+                            <input id="menu__toggle" type="checkbox" />
+                            <label className="menu__btn" for="menu__toggle">
+                                <span></span>
+                            </label>
+                            <ul className="menu__box">
+                                {showMenu()}
+                            </ul>
+                        </div>
 
                     </div>
 
-                    <div id="myLinks">
-                        <Link to="/" onClick={scrollMenu}>Home</Link>
-
-                        {showMenu()}
-                    </div>
 
                 </header>
 

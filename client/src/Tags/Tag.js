@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import Tags from './Tags';
+import useCookie from 'react-use-cookie';
 
 
 export default function Tag() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [userToken, setUserToken] = useCookie('token', '0');
     const { id } = useParams();
 
     async function getData() {
@@ -20,7 +23,7 @@ export default function Tag() {
         getData();
     }, []);
 
-    function showArticles(title, content, thumbnailURL, id, leadStory) {
+    function showArticlesLogged(title, content, thumbnailURL, id, leadStory) {
         return (
             <div className='articles'>
             <h3>{title}</h3>
@@ -30,7 +33,6 @@ export default function Tag() {
             <div className="abovetext">
               <div className="blur"></div>
               <a className="readmore" href={"/article/" + id}>
-                <p>Read more</p>
                 <button className='readmorebutton'><i className='bx bx-down-arrow-alt' ></i></button>
               </a>
             </div>
@@ -38,16 +40,55 @@ export default function Tag() {
         )
     }
 
-    if (loading) {
-        return <p>Loading...</p>;
+    function showArticlesNotLogged(title, thumbnailURL, leadStory, id) {
+        return (
+          <div className='articles'>
+          <h3>{title}</h3>
+          <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
+        </div>
+        )
+  
     }
 
-    return (
-        <div>
-            <h2>Articles by tag</h2>
-            <div className='container-articles'>
-                {data && data.map((article) => showArticles(article.title, article.content, article.thumbnailURL, article.id, article.leadStory))}
+    function allArticles() {
+        if (userToken === '0') {
+          return (
+            <div>
+              {/* map the data */}
+              {data && data.map((article) => {
+                return (
+                  <div>
+                    {showArticlesNotLogged(article.title, article.thumbnailURL, article.leadStory, article.id)}
+                    </div>
+                )
+              })}
             </div>
+          )
+        } else {
+          return (
+            <div>
+              {/* map the data */}
+              {data && data.map((article) => {
+                return (
+                  <div>
+                    {showArticlesLogged(article.title, article.leadStory, article.content, article.thumbnailURL, article.id)}
+                    </div>
+                )
+              })}
+            </div>
+          )
+        }
+      }
+    
+      if (loading) {
+        return <p>Loading...</p>;
+      } else {
+        allArticles();
+      }
+    
+      return (
+        <div className='container-articles'>
+          {data && allArticles()}
         </div>
-    )
-}
+      )
+    }

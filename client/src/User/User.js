@@ -2,7 +2,7 @@ import useCookie from 'react-use-cookie';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { render } from '@testing-library/react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import "./User.css";
 
 export default function User() {
@@ -12,10 +12,10 @@ export default function User() {
     const [flag, setFlag] = useState(true);
     const [name, setName] = useState('');
     const { id } = useParams();
+    const navigate = useNavigate();
 
-    function changeName() {
-        setLoading(true);
-        axios.put('http://localhost:8000/api/user/', {
+   async function changeName() {
+       await axios.put('http://localhost:8000/api/updateUsername/', {
             name: name
         }, {
             headers: {
@@ -25,26 +25,21 @@ export default function User() {
             }
         }).then((response) => {
             console.log(response);
-            getData();
-            setLoading(false);
+            setFlag(!flag);
         }).catch((error) => {
             console.log(error);
         });
-
-        return (
-            <div>
-                <p>{loading && 'Loading...'}</p>
-            </div>
-        )
+        
+        window.location.reload();
     }
 
 
     function displayUser(name, email, id) {
         return (
-            <div>
-                <p>{loading && 'Loading...'}</p>
-                <h3>Username: {name}</h3>
-                <p>Email: {email}</p>
+            <div className='User-infos'>
+                <h4>{loading && 'Loading...'}</h4>
+                <h2>Username: <p>{name}</p></h2>
+                <h2 className='email'>Email: <p>{email}</p></h2>
             </div>
         )
     }
@@ -58,7 +53,6 @@ export default function User() {
         })).data;
         setData(response);
         setLoading(false);
-        console.log(response);
     }
 
     useEffect(() => {
@@ -73,13 +67,13 @@ export default function User() {
 
     return (
         <div className="userdiv">
-            <h2>User page</h2>
+            <h1>User infos</h1>
             {data && displayUser(data.name, data.email, data.id)}
             <div className='changeusername'>
             <label>Change username:</label>
             <input type="text" onChange={(e) => setName(e.target.value)} />
-            </div>
             <button onClick={changeName}>Change username</button>
+            </div>
         </div>
     )
 }

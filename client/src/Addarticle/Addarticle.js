@@ -39,7 +39,7 @@ export default function Addarticle() {
 	})
     console.log(resp)
     
-    window.location.href = '/';
+    window.location.href = '/article/'+resp.data.id;
 }
 
     return (
@@ -50,7 +50,7 @@ export default function Addarticle() {
                     <h3>Title</h3>
                     <input type='text' onChange={(e) => setTitle(e.target.value)} />
                     <h3>Content</h3>
-                    <input type='text' onChange={(e) => setContent(e.target.value)} />
+                    <textarea rows={5} onChange={(e) => setContent(e.target.value)} />
                     <h3>Thumbnail (png or jpeg)</h3>
                     <input type='file'  accept='image/png, image/jpeg' id='thumbnail' name='thumbnail' onChange={(e) => setFile(e.target.files[0])}  />
                     <div className='addtags'>
@@ -58,6 +58,7 @@ export default function Addarticle() {
                     </div>
                     <h3>Media Type (optional)</h3>
                     <select onChange={(e) => setMediaType(e.target.value)}>
+                        <option value="">None</option>
                         <option value="image">Image</option>
                         <option value="video">Video</option>
                         <option value="audio">Audio</option>
