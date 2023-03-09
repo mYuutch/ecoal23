@@ -7,15 +7,20 @@ export default function User() {
     const [token, setUserToken] = useCookie('token', '0');
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [flag , setFlag] = useState(true);
 
-    function changeName() {        
+    function changeName() {  
+        if (flag) {
+            setFlag(false);
+              
         
         render (
             <div>
                 <input type="text" placeholder="New username" />
-                <input type="button" value="Change" />
+                <input type="button" value="Change" onSubmit={} />
             </div>
         )
+        }
     }
 
     function displayUser(name, email) {
