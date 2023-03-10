@@ -11,6 +11,7 @@ import User from "../User/User";
 import Search from "../Search/Search";
 import Tags from "../Tags/Tags";
 import Tag from "../Tags/Tag";
+import Addtag from "../Tags/Addtag";
 import useCookie from 'react-use-cookie';
 import { useState } from "react";
 
@@ -100,6 +101,7 @@ export default function Menu() {
                     <li><Link to="/user" className="menu__item" onClick={scrollMenu}>User</Link></li>
                     <li>  <Link to="/dashboard" className="menu__item" onClick={scrollMenu}>Dashboard</Link></li>
                     <li>  <Link to="/addarticle" className="menu__item" onClick={scrollMenu}>Add an Article</Link></li>
+                    <li>  <Link to="/addtag" className="menu__item" onClick={scrollMenu}>Add a Category</Link></li>
                     <li> <Link to="/logout" className="menu__item" onClick={scrollMenu}>Logout</Link></li>
                     <li> <Link to="" className="menu__item" onClick={changeTheme}>Theme</Link></li>
                 </>
@@ -160,7 +162,7 @@ export default function Menu() {
                 <Route path="/tags/" element={<Tags />} />
                 <Route path="/tag/:id" element={<Tag />} />
                 <Route path="/tag/" element={<Tag />} />
-
+                <Route path="/addtag" element={<Addtag />} />
             </Routes>
         </>
     )
