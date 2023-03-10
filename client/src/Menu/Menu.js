@@ -24,17 +24,15 @@ export default function Menu() {
         function changeTheme() {
             const head = document.head;
             const logo = document.getElementById('logoid');
-
             
             if (theme === 'light') {
                 const link = document.createElement('style');
-                link.innerHTML ="*{background-color: black;color:white;} .topnav a{color: white;background-color: black;} .blur{background-color:black !important;} .menu__box{background-color: black;} .menu__btn > span, .menu__btn > span::before, .menu__btn > span::after {background-color: white;} .tags a h3 {border: 1px solid black;}"
+                link.innerHTML ="*{background-color: black;color:white;} .topnav a{color: white;background-color: black;} .blur{background-color:black !important;} .menu__box{background-color: black;} .menu__btn > span, .menu__btn > span::before, .menu__btn > span::after {background-color: white;} .tags a h3 {border: 1px solid white;}"
                 logo.src='/images/logo.PNG';
                 head.appendChild(link);
                 setTheme('dark');
             } else {
-                const link = document.createElement('style');
-                
+                const link = document.createElement('style');     
                 link.innerHTML ="*{background-color: white;color:black;}.topnav a{color: black;background-color: white;} .blur{background-color:white !important;} .menu__box{background-color: white;} .menu__btn > span, .menu__btn > span::before, .menu__btn > span::after {background-color: black;} .tags a h3 {border: 1px solid black;}"
                 logo.src='/images/logodark.PNG';
                 head.appendChild(link);
