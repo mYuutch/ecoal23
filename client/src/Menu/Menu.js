@@ -21,17 +21,39 @@ export default function Menu() {
     document.querySelector('*').classList.add('dark');
     
     function changeTheme() {
-        let body = document.querySelector('* , .articles');
-        let text = document.querySelectorAll('h2, h3, p');
-        let readmorep = document.querySelectorAll('.readmore');
+        const head = document.head;
         
-        body.classList.toggle('light');
-        text.forEach((item) => {
-            item.classList.toggle('light');
-        })
-        readmorep.forEach((item) => {
-            item.classList.toggle('light');
-        })
+        if (theme === 'light') {
+            const link = document.createElement('style');
+            link.innerHTML ="*{background-color: white;color:black;}"
+            head.appendChild(link);
+          setTheme('dark');
+        } else {
+            const link = document.createElement('style');
+            link.innerHTML ="*{background-color: black;color:white;}"
+            head.appendChild(link);
+          }
+          setTheme('light');
+        }
+        // Remove the link element for home.css
+        const homeLink = document.querySelector('link[href="../src/Home/Home.css"]');
+        if (homeLink) {
+          homeLink.remove();
+        }
+      
+
+      
+        // let body = document.querySelector('* , .articles');
+        // let text = document.querySelectorAll('h2, h3, p');
+        // let readmorep = document.querySelectorAll('.readmore');
+        
+        // body.classList.toggle('light');
+        // text.forEach((item) => {
+        //     item.classList.toggle('light');
+        // })
+        // readmorep.forEach((item) => {
+        //     item.classList.toggle('light');
+        // })
 
 
         // if (theme === 'light') {
@@ -50,7 +72,7 @@ export default function Menu() {
         //     setTheme('light');
         // }
         
-    }
+    
     function showMenu() {
         if (token === '0') {
             return (
