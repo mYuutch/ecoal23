@@ -25,7 +25,6 @@ export default function Register() {
         })).data;
         setLoading(false);
         setRegistered(true);
-        console.log(response);
         if (response.error) {
             setError(response.error);
         } else {
@@ -35,7 +34,6 @@ export default function Register() {
                 Secure: true,
             });
             setRegistered(true);
-            console.log(response['access_token']);
         }
     }
 

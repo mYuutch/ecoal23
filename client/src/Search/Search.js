@@ -18,7 +18,6 @@ export default function Search() {
   async function getData() {
     const response = (await axios.get('http://localhost:8000/api/articles/')).data;
     setData(response);
-    console.log(response);
   }
 
   useEffect(() => {

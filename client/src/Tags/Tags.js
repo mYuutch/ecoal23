@@ -14,7 +14,6 @@ export default function Tags() {
         const response = (await axios.get('http://localhost:8000/api/tags')).data;
         setData(response);
         setLoading(false);
-        console.log(response);
     }
 
     useEffect(() => {

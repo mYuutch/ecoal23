@@ -16,7 +16,6 @@ export default function Articles() {
     const response = (await axios.get('http://localhost:8000/api/articles')).data;
     setData(response);
     setLoading(false);
-    console.log(response);
   }
 
   useEffect(() => {
@@ -78,7 +77,6 @@ export default function Articles() {
     if (userToken === '0') {
       return (
         <div>
-          {/* map the data */}
           {data && data.map((article) => {
             return (
               <div>
@@ -91,7 +89,6 @@ export default function Articles() {
     } else {
       return (
         <div>
-          {/* map the data */}
           {data && data.map((article) => {
             return (
               <div>

@@ -26,7 +26,6 @@ export default function Dashboard() {
         function deleteArticle() {
             axios.delete('http://localhost:8000/api/article/' + id)
                 .then(response => {
-                    console.log(response);
                     window.location.reload();
                 })
                 .catch(error => {

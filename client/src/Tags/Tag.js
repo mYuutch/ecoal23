@@ -16,14 +16,13 @@ export default function Tag() {
         const response = (await axios.get('http://localhost:8000/api/articles/tag/'+id)).data;
         setData(response);
         setLoading(false);
-        console.log(response);
     }
 
     useEffect(() => {
         getData();
     }, []);
 
-    function showArticlesLogged(title, content, thumbnailURL, id, leadStory) {
+    function showArticlesLogged(title, thumbnailURL, leadStory, id, content) {
         return (
             <div className='articles'>
             <h3>{title}</h3>
@@ -71,7 +70,7 @@ export default function Tag() {
               {data && data.map((article) => {
                 return (
                   <div>
-                    {showArticlesLogged(article.title, article.content, article.thumbnailURL, article.content, article.id)}
+                    {showArticlesLogged(article.title, article.thumbnailURL, article.leadStory, article.id, article.content)}
                     </div>
                 )
               })}

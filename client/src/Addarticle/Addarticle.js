@@ -29,7 +29,6 @@ export default function Addarticle() {
     formData.append("token", token);
     
     formData.append("tags", tags);
-    console.log(tags);
     const resp = await axios.post(UPLOAD_ENDPOINT, formData, {
       headers: {
           "content-type": "multipart/form-data",
@@ -37,7 +36,6 @@ export default function Addarticle() {
           "Authorization": "Bearer " + token,
         },
 	})
-    console.log(resp)
     
     window.location.href = '/article/'+resp.data.id;
 }
