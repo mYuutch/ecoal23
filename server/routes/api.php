@@ -7,6 +7,8 @@ use App\Models\Tag;
 
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\TagsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +71,7 @@ Route::get('/articles/notLead', function (){
 });
 
 //Delete a specific article
+/*
 Route::delete('/article/{id}', function($id){
     $article = App\Models\Article::find($id);
 
@@ -79,7 +82,9 @@ Route::delete('/article/{id}', function($id){
     $article->delete();
     return response("", 202);
 });
+*/
 
+Route::delete('/article/{id}', [ArticlesController::class, 'delete']);
 
 //Get an article by Title
 Route::get('/article/title/{title}', function($title){

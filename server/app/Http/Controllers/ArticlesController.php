@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\ArticlesController;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -66,7 +66,7 @@ class ArticlesController extends Controller
     }
 
     public function delete($id){
-        $article = App\Models\Article::find($id);
+        $article = Article::find($id);
 
         if ($article == false) {
             return response("", 204);
