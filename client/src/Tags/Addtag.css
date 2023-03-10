@@ -1,0 +1,36 @@
+.addtag form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    margin-top: 40px;
+    gap: 10px;
+    text-align: left;
+}
+
+.addtag input {
+    background-color: white;
+    color: black;
+    font-size: 1.2rem;
+}
+
+.addtag label {
+    text-align: center;
+    width: 100%;
+    text-decoration: underline #FFD550;
+    font-size: 1.3rem;
+}
+
+.addtag button {
+    background-color: #FFD550;
+    color: black;
+    font-size: 1rem;
+    border-radius: 2rem;
+    border: none;
+    padding: 10px;
+    margin: 10px 0 0 0;
+}
