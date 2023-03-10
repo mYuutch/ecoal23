@@ -65,13 +65,24 @@ export default function Articles() {
 
       return (
         <div className='articles'>
-          <a href="/login/">
         <h3>{title}</h3>
         <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
-        </a>
       </div>
       )
+  }
 
+  function needLogin() {
+    if (userToken === '0'){
+    return (
+      <div className='gologin'>
+        <div>
+        <h3>Log in or register to read more</h3>
+        <a href="/login/"><button className='loginbutton'>Log in</button></a>
+        <a href="/register/"><button className='registerbutton'>Register</button></a>
+        </div>
+      </div>
+    )
+    }
   }
 
 
@@ -112,6 +123,7 @@ export default function Articles() {
   return (
     <div className='container-articles'>
       {data && allArticles()}
+      {needLogin()}
     </div>
   )
 }

@@ -177,3 +177,29 @@
         width: 16rem;
     }
 }
+
+.gologin{
+/* put the div following the page */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.gologin > div {
+}
+
+.gologin button {
+    background-color: #FFD550;
+    color: black;
+    font-weight: bold;
+    padding: 0 14vw;
+    margin: 10px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
