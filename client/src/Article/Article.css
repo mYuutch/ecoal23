@@ -93,13 +93,20 @@
 }
 .readmorebutton{
     text-align: center;
-    background-color: #FFD550;
     font-weight: bold;
     padding: 0 14vw;
     margin: 10px;
     border-radius: 10px;
     transition: 0.5s;
 }
+.readmore:hover{
+    background-color: white;
+    color: white;
+}
+.readmorebutton:hover{
+    color: white;
+}
+
 .bx{
     color: black;
     background: none;
