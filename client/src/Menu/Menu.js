@@ -18,29 +18,35 @@ export default function Menu() {
     const [token, setUserToken] = useCookie('token', '0');
     const [theme, setTheme] = useState('dark');
 
-    document.querySelector('*').classList.add('dark');
+
     
-    function changeTheme() {
-        const head = document.head;
+        function changeTheme() {
+            const head = document.head;
+            const logo = document.getElementById('logoid');
+
+            
+            if (theme === 'light') {
+                const link = document.createElement('style');
+                link.innerHTML ="*{background-color: black;color:white;} .topnav a{color: white;background-color: black;} .blur{background-color:black !important;} .menu__box{background-color: black;} .menu__btn > span, .menu__btn > span::before, .menu__btn > span::after {background-color: white;} .tags a h3 {border: 1px solid black;}"
+                logo.src='/images/logo.PNG';
+                head.appendChild(link);
+                setTheme('dark');
+            } else {
+                const link = document.createElement('style');
+                
+                link.innerHTML ="*{background-color: white;color:black;}.topnav a{color: black;background-color: white;} .blur{background-color:white !important;} .menu__box{background-color: white;} .menu__btn > span, .menu__btn > span::before, .menu__btn > span::after {background-color: black;} .tags a h3 {border: 1px solid black;}"
+                logo.src='/images/logodark.PNG';
+                head.appendChild(link);
+                setTheme('light');
+            }
+            
+            }
+            // Remove the link element for home.css
+            const homeLink = document.querySelector('link[href="../src/Home/Home.css"]');
+            if (homeLink) {
+            homeLink.remove();
+            }
         
-        if (theme === 'light') {
-            const link = document.createElement('style');
-            link.innerHTML ="*{background-color: white;color:black;}"
-            head.appendChild(link);
-          setTheme('dark');
-        } else {
-            const link = document.createElement('style');
-            link.innerHTML ="*{background-color: black;color:white;}"
-            head.appendChild(link);
-          }
-          setTheme('light');
-        }
-        // Remove the link element for home.css
-        const homeLink = document.querySelector('link[href="../src/Home/Home.css"]');
-        if (homeLink) {
-          homeLink.remove();
-        }
-      
 
       
         // let body = document.querySelector('* , .articles');
@@ -119,7 +125,7 @@ export default function Menu() {
             <div className="topnav">
                 <header>
                     <div className="topmenu">
-                        <a href="/" className="active"><img className="logo" src="/images/logo.PNG"></img></a>
+                        <a href="/" className="active"><img id="logoid" className="logo" src="/images/logo.PNG"></img></a>
                         <a href="/" className="active textlogo">The Urban Commuter</a>
 
                         <div className="hamburger-menu">
