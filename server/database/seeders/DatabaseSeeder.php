@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 
 use App\Models\Article;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
