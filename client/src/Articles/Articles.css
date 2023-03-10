@@ -168,5 +168,12 @@
     .articles{
         max-width: 50rem;
     }
+    .articles p{
+        font-size: 1rem;
 
+    }
+
+    .tags{
+        width: 16rem;
+    }
 }
