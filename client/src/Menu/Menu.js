@@ -13,18 +13,42 @@ import Tags from "../Tags/Tags";
 import Tag from "../Tags/Tag";
 import Addtag from "../Tags/Addtag";
 import useCookie from 'react-use-cookie';
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from 'axios';
 
 export default function Menu() {
     const [token, setUserToken] = useCookie('token', '0');
     const [theme, setTheme] = useState('dark');
+    const [data, setData] = useState(null);
+
+    async function getUser() {
+        const response = (await axios.get('http://localhost:8000/api/user', { headers: { 'Authorization': 'Bearer ' + token } })).data;
+        setData(response);
+        console.log(response);
+    }
+
+    useEffect(() => {
+        getUser();
+    }, []);
 
 
+    function isAdmin() {
+        if (data) {
+            if (data.admin === 1) {
+                return (
+                    <>
+                                        <li>  <Link to="/dashboard" className="menu__item" onClick={scrollMenu}>Dashboard</Link></li>
+                    <li>  <Link to="/addarticle" className="menu__item" onClick={scrollMenu}>Add an Article</Link></li>
+                    <li>  <Link to="/addtag" className="menu__item" onClick={scrollMenu}>Add a Category</Link></li>
+                    </>
+                )
+            }
+        }
+    }
     
         function changeTheme() {
             const head = document.head;
             const logo = document.getElementById('logoid');
-
             
             if (theme === 'light') {
                 const link = document.createElement('style');
@@ -46,39 +70,7 @@ export default function Menu() {
             const homeLink = document.querySelector('link[href="../src/Home/Home.css"]');
             if (homeLink) {
             homeLink.remove();
-            }
-        
-
-      
-        // let body = document.querySelector('* , .articles');
-        // let text = document.querySelectorAll('h2, h3, p');
-        // let readmorep = document.querySelectorAll('.readmore');
-        
-        // body.classList.toggle('light');
-        // text.forEach((item) => {
-        //     item.classList.toggle('light');
-        // })
-        // readmorep.forEach((item) => {
-        //     item.classList.toggle('light');
-        // })
-
-
-        // if (theme === 'light') {
-        //     body.style.background = 'black';
-        //     body.style.color = 'white';
-        //     text.forEach((item) => {
-        //         item.style.color = 'white';
-        //     })
-        //     setTheme('dark');
-        // } else {
-        //     body.style.background = 'white';
-        //     body.style.color = 'black';
-        //     text.forEach((item) => {
-        //         item.style.color = 'black';
-        //     })
-        //     setTheme('light');
-        // }
-        
+            }        
     
     function showMenu() {
         if (token === '0') {
@@ -89,7 +81,7 @@ export default function Menu() {
                     <li><Link to="/search" className="menu__item" onClick={scrollMenu}>All articles</Link></li>
                     <li> <Link to="/login" className="menu__item" onClick={scrollMenu}>Login</Link></li>
                     <li> <Link to="/register" className="menu__item" onClick={scrollMenu}>Register</Link></li>
-                    <li> <Link to="" className="menu__item" onClick={changeTheme}>Theme</Link></li>
+                    <li> <a className="menu__item" onClick={changeTheme}>Theme</a></li>
                 </>
             )
         } else {
@@ -99,11 +91,9 @@ export default function Menu() {
                     <li><Link to="/tags" className="menu__item" onClick={scrollMenu}>Categories</Link></li>
                     <li><Link to="/search" className="menu__item" onClick={scrollMenu}>All articles</Link></li>
                     <li><Link to="/user" className="menu__item" onClick={scrollMenu}>User</Link></li>
-                    <li>  <Link to="/dashboard" className="menu__item" onClick={scrollMenu}>Dashboard</Link></li>
-                    <li>  <Link to="/addarticle" className="menu__item" onClick={scrollMenu}>Add an Article</Link></li>
-                    <li>  <Link to="/addtag" className="menu__item" onClick={scrollMenu}>Add a Category</Link></li>
+                    {isAdmin()}
                     <li> <Link to="/logout" className="menu__item" onClick={scrollMenu}>Logout</Link></li>
-                    <li> <Link to="" className="menu__item" onClick={changeTheme}>Theme</Link></li>
+                    <li> <a className="menu__item" onClick={changeTheme}>Theme</a></li>
                 </>
             )
         }
