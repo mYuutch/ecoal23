@@ -24,7 +24,6 @@ export default function Menu() {
     async function getUser() {
         const response = (await axios.get('http://localhost:8000/api/user', { headers: { 'Authorization': 'Bearer ' + token } })).data;
         setData(response);
-        console.log(response);
     }
 
     useEffect(() => {
@@ -122,7 +121,7 @@ export default function Menu() {
 
                         <div className="hamburger-menu">
                             <input id="menu__toggle" type="checkbox" />
-                            <label className="menu__btn" for="menu__toggle">
+                            <label className="menu__btn" htmlFor="menu__toggle">
                                 <span></span>
                             </label>
                             <ul className="menu__box">

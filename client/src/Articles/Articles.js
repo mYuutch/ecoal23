@@ -65,8 +65,10 @@ export default function Articles() {
 
       return (
         <div className='articles'>
+          <a href="/login/">
         <h3>{title}</h3>
         <img src={'http://localhost:8000/'+thumbnailURL} alt={title} />
+        </a>
       </div>
       )
 
