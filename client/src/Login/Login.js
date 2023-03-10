@@ -43,7 +43,7 @@ export default function Login() {
             <input type="text" placeholder="Email" onChange={e => setEmail(e.target.value)} />
             <label>Password</label>
             <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
-            <button onClick={login}>Login</button>
+            <button disabled = {!email||!password}  onClick={login}>Login</button>
             </div>
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
